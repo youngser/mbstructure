@@ -1,10 +1,4 @@
 
-<style type="text/css">
-.table {
-    width: 40%;
-}
-</style>
-
 
 
 ## Semiparametric spectral modeling of the Drosophila connectome
@@ -127,4 +121,4 @@ library(help='mbstructure')
 ```
 
 -----
-*prepared by <youngser@jhu.edu> on Mon Feb 20 10:00:11 2017*
+*prepared by <youngser@jhu.edu> on Mon Feb 20 10:25:39 2017*
