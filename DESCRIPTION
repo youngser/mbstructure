@@ -1,0 +1,22 @@
+Package: mbstructure
+Type: Package
+Title: Semiparametric spectral modeling of the complete larval Drosophila mushroom body connectome
+Version: 0.1.0
+Depends:
+    R (>= 3.0)
+Imports:
+    igraph,
+    Matrix,
+    lattice,
+    ggplot2,
+    mclust,
+    mvtnorm,
+    RColorBrewer,
+    packcircles
+Author: Youngser Park, Yichen Qin
+Maintainer: Youngser Park <youngser@jhu.edu>
+Description: Routine to perform semiparametric spectral modeling of the complete larval Drosophila mushroom body connectome.
+License: GPL (>= 2)
+URL: http://www.cis.jhu.edu/~parky/MBstructure.html
+LazyData: TRUE
+RoxygenNote: 5.0.1
