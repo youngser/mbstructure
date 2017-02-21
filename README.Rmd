@@ -80,7 +80,7 @@ To run the experiemnts in the paper, please follow these steps:
 
 ### The larval _Drosophila_ mushroom body connectome
 
-Output of this chunk looks like [this](sec2.html).
+Output of this chunk is shown [here](sec2.html).
 
 ```{r fig2}
 library(mbstructure)
@@ -94,14 +94,14 @@ plotConnections(g, vdf)
 
 ### Spectral clustering
 
-Output of this chunk looks like [this](sec3.html).
+Output of this chunk is shown [here](sec3.html).
 
 ```{r fig4}
 dmax <- 50
 Xhat <- doEmbed(g, dmax)
 
 Kmax <- 19
-mc <- Mclust(Xhat, 1:Kmax)
+mc <- Mclust(Xhat, 2:Kmax)
 vdf$cluster <- factor(mc$class)
 plotBIC(mc)
 plotClustering(Xhat, mc, vdf)
@@ -109,33 +109,59 @@ plotClustering(Xhat, mc, vdf)
 
 ### Semiparametric spectral modeling
 
-Output of this chunk looks like [this](sec4.html).
+Output of this chunk is shown [here](sec4.html).  
+Warning: This takes several minutes to run on my laptop!
 
 ```{r semipar}
-synthMB(g, vdf)
-plotMLE(Xhat, vdf) 
+sout4 <- synthMB(g, Xhat, vdf, labK=vdf$type, Khat=4, dtype="real", doplot=TRUE)
+semiout <- plotMLE(Xhat, vdf) 
 ```
 
-```{r etc, eval=FALSE, echo=FALSE}
+
 ### Discussion
 
-A2 <- (g[] + t(g[])) / 2
+#### Directed! Weighted?
+
+Output of this chunk is shown [here](disc-1.html).  
+Warning: This takes about _half an hour_ to run on my laptop!
+
+```{r weight}
+g.w <-out$g.w
+compairARI(g, g.w, vdf)
 ```
 
-```{r g-left,eval=FALSE,echo=FALSE}
-out.left <- generate.graph(newldat, vdf.left)
-g.left <- out.left$g
-vdf.left <- out.left$vdf
-plotConnections(g.left, vdf.left)
+#### Synthetic validation
+
+Output of this chunk is shown [here](disc-2.html).  
+Warning: This takes a few minutes to run on my laptop!
+
+```{r synth}
+syntheticValidation(g, Xhat, vdf)
+```
+
+#### Hemispheric validation: right vs. left
+
+Output of this chunk is shown [here](disc-3.html).  
+Warning: This takes a few minutes to run on my laptop!
+
+```{r g-left}
+right.vs.left(Xhat, vdf, semiout$out100)
 ```
 
 ## `R` Package
 
-The latest `R` source package can be downloaded from [here](http://www.cis.jhu.edu/~parky/mbstructure_0.1.0.tar.gz).  
-It can be installed via:
+The latest `R` source package can be installed via:
 ```{r echo=TRUE,eval=FALSE}
-install.packages("http://username:password@www.cis.jhu.edu/~parky/MBstructure/mbstructure_0.1.0.tar.gz",type="source",method="wget")
+install.packages("http://www.cis.jhu.edu/~parky/MBstructure/mbstructure_0.1.0.tar.gz",type="source",method="wget")
 ```
+
+or
+
+```{r echo=TRUE}
+require(devtools)
+devtools::install_github("youngser/mbstructure")
+```
+
 ```{r vn,echo=TRUE, eval=TRUE}
 library(help='mbstructure')
 ```

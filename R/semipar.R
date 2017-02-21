@@ -153,10 +153,10 @@ plotMLE <- function(Xhat, vdf)
     n <- nrow(Xhat4)
     p <- ncol(Xhat4)
 
-    out <- semiparYQ(Xhat4, K=K, verbose=FALSE)
+    out100 <- semiparYQ(Xhat4, K=K, verbose=FALSE)
 
-    means <- out$means
-    vars <- t(sapply(1:dim(out$vars)[3],function(x) sqrt(diag(out$vars[,,x]))))
+    means <- out100$means
+    vars <- t(sapply(1:dim(out100$vars)[3],function(x) sqrt(diag(out100$vars[,,x]))))
     K <- nrow(means)
 
     Xhat5 <- rbind(Xhat4,means)
@@ -226,10 +226,10 @@ plotMLE <- function(Xhat, vdf)
     print(p4)
 
     # Figure 11
-    out <- semiparYQ(Xhat4, K=8, verbose=FALSE)
-    mean1 <- out$mean1
-    mean2 <- out$mean2
-    mean3 <- out$mean3
+    out8 <- semiparYQ(Xhat4, K=8, verbose=FALSE)
+    mean1 <- out8$mean1
+    mean2 <- out8$mean2
+    mean3 <- out8$mean3
     t_proj_ls <- rep(NA,n)
     proj_ls <- matrix(NA,n,p)
     for (i in 1:n)
@@ -260,4 +260,6 @@ plotMLE <- function(Xhat, vdf)
         geom_smooth(method = "lm", se = TRUE) +
         xlab(expression(t[i])) + ylab(expression(delta[i]))
     print(p6)
+
+    return(list(out100=out100,out8=out8))
 }

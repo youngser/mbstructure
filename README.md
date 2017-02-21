@@ -35,7 +35,7 @@ To run the experiemnts in the paper, please follow these steps:
 
 ### The larval _Drosophila_ mushroom body connectome
 
-Output of this chunk looks like [this](sec2.html).
+Output of this chunk is shown [here](sec2.html).
 
 
 ```r
@@ -50,7 +50,7 @@ plotConnections(g, vdf)
 
 ### Spectral clustering
 
-Output of this chunk looks like [this](sec3.html).
+Output of this chunk is shown [here](sec3.html).
 
 
 ```r
@@ -58,7 +58,7 @@ dmax <- 50
 Xhat <- doEmbed(g, dmax)
 
 Kmax <- 19
-mc <- Mclust(Xhat, 1:Kmax)
+mc <- Mclust(Xhat, 2:Kmax)
 vdf$cluster <- factor(mc$class)
 plotBIC(mc)
 plotClustering(Xhat, mc, vdf)
@@ -66,26 +66,65 @@ plotClustering(Xhat, mc, vdf)
 
 ### Semiparametric spectral modeling
 
-Output of this chunk looks like [this](sec4.html).
+Output of this chunk is shown [here](sec4.html).  
+Warning: This takes several minutes to run on my laptop!
 
 
 ```r
-synthMB(g, vdf)
-plotMLE(Xhat, vdf) 
+sout4 <- synthMB(g, Xhat, vdf, labK=vdf$type, Khat=4, dtype="real", doplot=TRUE)
+semiout <- plotMLE(Xhat, vdf) 
 ```
 
 
+### Discussion
+
+#### Directed! Weighted?
+
+Output of this chunk is shown [here](disc-1.html).  
+Warning: This takes about _half an hour_ to run on my laptop!
 
 
+```r
+g.w <-out$g.w
+compairARI(g, g.w, vdf)
+```
+
+#### Synthetic validation
+
+Output of this chunk is shown [here](disc-2.html).  
+Warning: This takes a few minutes to run on my laptop!
+
+
+```r
+syntheticValidation(g, Xhat, vdf)
+```
+
+#### Hemispheric validation: right vs. left
+
+Output of this chunk is shown [here](disc-3.html).  
+Warning: This takes a few minutes to run on my laptop!
+
+
+```r
+right.vs.left(Xhat, vdf, semiout$out100)
+```
 
 ## `R` Package
 
-The latest `R` source package can be downloaded from [here](http://www.cis.jhu.edu/~parky/mbstructure_0.1.0.tar.gz).  
-It can be installed via:
+The latest `R` source package can be installed via:
 
 ```r
-install.packages("http://username:password@www.cis.jhu.edu/~parky/MBstructure/mbstructure_0.1.0.tar.gz",type="source",method="wget")
+install.packages("http://www.cis.jhu.edu/~parky/MBstructure/mbstructure_0.1.0.tar.gz",type="source",method="wget")
 ```
+
+or
+
+
+```r
+require(devtools)
+devtools::install_github("youngser/mbstructure")
+```
+
 
 ```r
 library(help='mbstructure')
@@ -102,8 +141,8 @@ library(help='mbstructure')
 ##                larval Drosophila mushroom body connectome
 ## Version:       0.1.0
 ## Depends:       R (>= 3.0)
-## Imports:       igraph, Matrix, lattice, ggplot2, mclust, mvtnorm,
-##                RColorBrewer, packcircles
+## Imports:       igraph, Matrix, lattice, ggplot2, mclust, irlba,
+##                mvtnorm, RColorBrewer, packcircles
 ## Author:        Youngser Park, Yichen Qin
 ## Maintainer:    Youngser Park <youngser@jhu.edu>
 ## Description:   Routine to perform semiparametric spectral modeling
@@ -113,7 +152,7 @@ library(help='mbstructure')
 ## URL:           http://www.cis.jhu.edu/~parky/MBstructure.html
 ## LazyData:      TRUE
 ## RoxygenNote:   5.0.1
-## Built:         R 3.3.2; ; 2017-02-20 13:26:40 UTC; unix
+## Built:         R 3.3.2; ; 2017-02-21 18:31:47 UTC; unix
 ## 
 ## Index:
 ## 
@@ -121,4 +160,4 @@ library(help='mbstructure')
 ```
 
 -----
-*prepared by <youngser@jhu.edu> on Mon Feb 20 10:25:39 2017*
+*prepared by <youngser@jhu.edu> on Tue Feb 21 15:28:50 2017*

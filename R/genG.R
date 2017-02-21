@@ -26,6 +26,8 @@ generate.graph <- function(dat,vdf)
     iso <- which(degree(g)==0)
     vdf <- vdf[-iso,]
     g <- delete_vertices(g,iso);
+    g.w <- g
+
     # remove self loop & multiple edges
     g <- simplify(g) # not working? try manually
     A <- as.matrix(g[]); A[A>0] <- 1
@@ -51,5 +53,5 @@ generate.graph <- function(dat,vdf)
     V(g)$claw <- vdf$claw
     V(g)$dist <- vdf$dist
 
-    return(list(g=g, vdf=vdf))
+    return(list(g=g, g.w=g.w, vdf=vdf))
 }

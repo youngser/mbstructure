@@ -10,6 +10,7 @@ Imports:
     lattice,
     ggplot2,
     mclust,
+    irlba,
     mvtnorm,
     RColorBrewer,
     packcircles

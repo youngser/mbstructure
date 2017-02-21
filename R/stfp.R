@@ -57,24 +57,24 @@ rg.sample.correlated.gnp <- function(P,tau){
   diag(U) <- runif(n)
   A <- (U < P) + 0 ;
   diag(A) <- 0
-  
+
   avec <- A[col(A) > row(A)]
   pvec <- P[col(P) > row(P)]
   bvec <- numeric(n*(n-1)/2)
-  
+
   uvec <- runif(n*(n-1)/2)
-  
+
   idx1 <- which(avec == 1)
   idx0 <- which(avec == 0)
-  
+
   bvec[idx1] <- (uvec[idx1] < (tau + (1 - tau)*pvec[idx1])) + 0
   bvec[idx0] <- (uvec[idx0] < (1 - tau)*pvec[idx0]) + 0
-  
+
   B <- matrix(0, nrow = n, ncol = n)
   B[col(B) > row(B)] <- bvec
   B <- B + t(B)
   diag(B) <- 0
-  
+
   return(list(A = A, B = B))
 }
 
@@ -95,7 +95,7 @@ nonpsd.laplacian <- function(A){
 
     require(Matrix)
     n = nrow(A)
-    s <- rowSums(A)
+    s <- Matrix::rowSums(A)
     L <- Diagonal(x=s)/(n-1) + A
 
     return(L)
@@ -104,6 +104,7 @@ nonpsd.laplacian <- function(A){
 svd.extract <- function(A, dim = NULL, scaling = TRUE, diagaug = TRUE){
 
     require(Matrix)
+    require(irlba)
 
     if (diagaug) {
         L <- nonpsd.laplacian(A)
@@ -229,7 +230,7 @@ inverse.rdpg <- function(A, dim, G=NULL, scaling=TRUE, diagaug=TRUE){
         X <- out$vector
         Y <- out$vector2
     }
-    
+
 #  X.mclust <- Mclust(X, G)
     return(list(X = X, Y = Y, value = value))
 #    return(X)
