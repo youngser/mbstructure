@@ -5,11 +5,13 @@ syntheticValidation <- function(g, Xhat, vdf)
     suppressMessages(library(RColorBrewer))
 
     KC <- vdf$type=="KC"
-    sout4 <- synthMB(g, Xhat, vdf, labK=vdf$type, Khat=4, dtype="real", doplot=FALSE)
+    Khat <- length(table(vdf$type))
+    sout4 <- synthMB(g, Xhat, vdf, labK=vdf$type, Khat=Khat, dtype="real", doplot=FALSE)
     ase4 <- sout4$ase$X[KC,]
     aseBobs4 <- sout4$aseBobs$X[KC,]
 
-    sout6 <- synthMB(g, Xhat, vdf, labK=vdf$cluster, Khat=6, dtype="synth", doplot=FALSE)
+    Khat <- max(as.numeric(vdf$cluster))
+    sout6 <- synthMB(g, Xhat, vdf, labK=vdf$cluster, Khat=Khat, dtype="synth", doplot=FALSE)
     ase6 <- ase4 #$X[KC,]
     aseBobs6 <- sout6$aseBobsnew[KC,] # procrusted
 
@@ -40,9 +42,9 @@ syntheticValidation <- function(g, Xhat, vdf)
     df1 <- rbind(df1, data.frame(x=-ase6[,1],y=ase6[,2],type=NA,dat="hat(K)==6",neuron="KC"))
     df1 <- rbind(df1, data.frame(x=-ase8[,1],y=ase8[,2],type=NA,dat="semipar",neuron="KC"))
 
-    df2 <- data.frame(x=-aseBobs4[,1],y=aseBobs4[,2],type="small",dat="K==4",neuron="small")
+    df2 <- data.frame(x=-aseBobs4[,1],y=-aseBobs4[,2],type="small",dat="K==4",neuron="small")
     df2 <- rbind(df2, data.frame(x=aseBobs6[,1],y=-aseBobs6[,2],type="small",dat="hat(K)==6",neuron="small"))
-    df2 <- rbind(df2, data.frame(x=-aseBobs8[,1],y=-aseBobs8[,2],type="small",dat="semipar",neuron="small"))
+    df2 <- rbind(df2, data.frame(x=aseBobs8[,1],y=-aseBobs8[,2],type="small",dat="semipar",neuron="small"))
 
     mypal <- colorRampPalette( brewer.pal( 6 , "Set2" ) )
     mycols <- mypal(8)

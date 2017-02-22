@@ -8,38 +8,39 @@ synthMB <- function(g, Xhat, vdf, labK, Khat=6, dtype="real", doplot=TRUE)
         Khat <- length(tab)
         ase <- embed_adjacency_matrix(g,Khat) # observed MB connectome
         Bobsvec = c( 0.36202020 , 0.44571429 , 0.49448276 , 0 , 0.38333333 , 0 , 0.11986864 , 0 , 0 , 0.09359606 , 0.20812808 , 0 , 0.07587302 , 0 , 0 , 0 )
+        Bobs <- matrix(Bobsvec,ncol=Khat,byrow=T)
     } else {
         ase <- embed_adjacency_matrix(g,Khat) # observed MB connectome
         labK <- as.numeric(labK)
         tab <- table(labK)
         Bobsvec <- matrix(0,Khat,Khat);
         for (i in 1:Khat) for(j in 1:Khat) { Bobsvec[i,j] <- mean(as.matrix(g[])[labK==i,labK==j]) }
+        Bobs <- matrix(Bobsvec,ncol=Khat,byrow=F)
     }
 
-    Bobs <- matrix(Bobsvec,ncol=Khat,byrow=T)
     svdBobs <- svd(Bobs) # true latent positions for SBM on Bobs
     Bobsout <- svdBobs$u %*% diag(svdBobs$d^(1/2))
     Bobsin  <- diag(svdBobs$d^(1/2)) %*% t(svdBobs$v)
 
     ABobs <- sample_sbm(sum(tab),Bobs,as.numeric(tab),directed=T) # n=213 SBM on Bobs (with observed block proportions)
-    aseBobs <- embed_adjacency_matrix(ABobs,Khat)
     vec <- round(10000*rep(1/Khat, Khat))
     ABobs10000 <- sample_sbm(sum(vec),Bobs,vec,directed=T) # monster SBM on Bobs (with balanced block proportions)
     aseBobs10000 <- embed_adjacency_matrix(ABobs10000,Khat,options = list(maxiter=2000))
 
-    if (dtype!="real") {
+    if (dtype=="real") {
+        aseBobs <- embed_adjacency_matrix(ABobs,Khat)
+        aseBobsnew <- Bobsoutnew <- aseBobs10K <- labK <- NULL
+    } else {
         vorder <- unlist(sapply(1:Khat, function(x) which(labK==x)))
         aseBobs <- embed_adjacency_matrix(permute.vertices(ABobs,vorder),Khat)
-        aseBobsnew <- aseBobs$X %*% procrustes(aseBobs$X, ase$X)$W
+        aseBobsnew <- aseBobs$X[,1:Khat] %*% procrustes(aseBobs$X[,1:Khat], ase$X[,1:Khat])$W
         asemean <- t(sapply(1:Khat, function(x) colMeans(ase$X[labK==x,])))
-        proc1 <- procrustes(Bobsout,asemean)$W
+        proc1 <- procrustes(Bobsout[,1:Khat],asemean[,1:Khat])$W
         Bobsoutnew <- Bobsout %*% proc1
         labK.10K <- rep(1:Khat,times=vec)
         Bobsmean <- t(sapply(1:Khat, function(x) colMeans(aseBobs10000$X[labK.10K==x,])))
-        proc2 <- procrustes(Bobsmean, asemean)$W
-        aseBobs10K <- aseBobs10000$X %*% proc2
-    } else {
-        aseBobsnew <- Bobsoutnew <- aseBobs10K <- labK <- NULL
+        proc2 <- procrustes(Bobsmean[,1:Khat], asemean[,1:Khat])$W
+        aseBobs10K <- aseBobs10000$X[,1:Khat] %*% proc2
     }
 
     # Figure 7
