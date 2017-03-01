@@ -29,6 +29,12 @@ Y. Qin, B. Cocanougher, K. Eichler, M. Zlatic, A. Cardona,
   <figcaption>Illustration of the Drosophila Mushroom Body circuit as a (K = 4)-block directed stochastic block model. This first-order simplification of the structure of the circuit provides a framework for graph embedding inference, and for subsequent Knowledge Base interaction.</figcaption>
 </figure>
 
+## Data
+
+HHMI Janelia recently reconstructed the complete wiring diagram of the higher order parallel fiber system for associative learning in the larval Drosophila brain, the mushroom body (MB). Memories are thought to be stored as functional and structural changes in connections between neurons, but the complete circuit architecture of a higher-order learning center involved in memory formation or storage has not been known in any organism ... until now. This data set provides a real and important example for initial investigation into synapse-level structural connectome modeling.  
+
+Our MB connectome was obtained via serial section transmission electron microscopy of an entire larval Drosophila nervous system. This connectome contains the entirety of MB intrinsic neurons called Kenyon cells and all of their pre- and post-synaptic partners.
+
 ## Codes and Experiments
 
 To run the experiemnts in the paper, please follow these steps:
@@ -152,7 +158,7 @@ library(help='mbstructure')
 ## URL:           http://www.cis.jhu.edu/~parky/MBstructure.html
 ## LazyData:      TRUE
 ## RoxygenNote:   5.0.1
-## Built:         R 3.3.2; ; 2017-02-22 13:43:07 UTC; unix
+## Built:         R 3.3.2; ; 2017-02-25 13:26:29 UTC; unix
 ## 
 ## Index:
 ## 
@@ -160,4 +166,4 @@ library(help='mbstructure')
 ```
 
 -----
-*prepared by <youngser@jhu.edu> on Sat Feb 25 08:26:22 2017*
+*prepared by <youngser@jhu.edu> on Wed Mar  1 07:46:04 2017*
