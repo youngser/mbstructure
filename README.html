@@ -188,7 +188,7 @@ Illustration of the Drosophila Mushroom Body circuit as a (K = 4)-block directed
 <p>To run the experiemnts in the paper, please follow these steps:</p>
 <div id="the-larval-drosophila-mushroom-body-connectome" class="section level3">
 <h3>The larval <em>Drosophila</em> mushroom body connectome</h3>
-<p>Output of this chunk is shown <a href="sec2.html">here</a>.</p>
+<p>Output of this chunk is shown <a href="demo/sec2.html">here</a>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(mbstructure)
 <span class="kw">data</span>(MBconnectome)
 
@@ -199,7 +199,7 @@ vdf &lt;-<span class="st"> </span>out$vdf
 </div>
 <div id="spectral-clustering" class="section level3">
 <h3>Spectral clustering</h3>
-<p>Output of this chunk is shown <a href="sec3.html">here</a>.</p>
+<p>Output of this chunk is shown <a href="demo/sec3.html">here</a>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dmax &lt;-<span class="st"> </span><span class="dv">50</span>
 Xhat &lt;-<span class="st"> </span><span class="kw">doEmbed</span>(g, dmax)
 
@@ -211,7 +211,7 @@ vdf$cluster &lt;-<span class="st"> </span><span class="kw">factor</span>(mc$clas
 </div>
 <div id="semiparametric-spectral-modeling" class="section level3">
 <h3>Semiparametric spectral modeling</h3>
-<p>Output of this chunk is shown <a href="sec4.html">here</a>.<br />
+<p>Output of this chunk is shown <a href="demo/sec4.html">here</a>.<br />
 Warning: This takes several minutes to run on my laptop!</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sout4 &lt;-<span class="st"> </span><span class="kw">synthMB</span>(g, Xhat, vdf, <span class="dt">labK=</span>vdf$type, <span class="dt">Khat=</span><span class="dv">4</span>, <span class="dt">dtype=</span><span class="st">&quot;truth&quot;</span>, <span class="dt">doplot=</span><span class="ot">TRUE</span>)
 semiout &lt;-<span class="st"> </span><span class="kw">plotMLE</span>(Xhat, vdf) </code></pre></div>
@@ -220,20 +220,20 @@ semiout &lt;-<span class="st"> </span><span class="kw">plotMLE</span>(Xhat, vdf)
 <h3>Discussion</h3>
 <div id="directed-weighted" class="section level4">
 <h4>Directed! Weighted?</h4>
-<p>Output of this chunk is shown <a href="disc-1.html">here</a>.<br />
+<p>Output of this chunk is shown <a href="demo/disc-1.html">here</a>.<br />
 Warning: This takes about <em>half an hour</em> to run on my laptop!</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g.w &lt;-out$g.w
 <span class="kw">compairARI</span>(g, g.w, vdf)</code></pre></div>
 </div>
 <div id="synthetic-validation" class="section level4">
 <h4>Synthetic validation</h4>
-<p>Output of this chunk is shown <a href="disc-2.html">here</a>.<br />
+<p>Output of this chunk is shown <a href="demo/disc-2.html">here</a>.<br />
 Warning: This takes a few minutes to run on my laptop!</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">syntheticValidation</span>(g, Xhat, vdf)</code></pre></div>
 </div>
 <div id="hemispheric-validation-right-vs.left" class="section level4">
 <h4>Hemispheric validation: right vs. left</h4>
-<p>Output of this chunk is shown <a href="disc-3.html">here</a>.<br />
+<p>Output of this chunk is shown <a href="demo/disc-3.html">here</a>.<br />
 Warning: This takes a few minutes to run on my laptop!</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">right.vs.left</span>(Xhat, vdf, semiout$out100)</code></pre></div>
 </div>
@@ -274,7 +274,7 @@ devtools::<span class="kw">install_github</span>(<span class="st">&quot;youngser
 ## 
 ## hello                   Hello, World!</code></pre>
 <hr />
-<p><em>prepared by <a href="mailto:youngser@jhu.edu">youngser@jhu.edu</a> on Wed Mar 1 07:46:04 2017</em></p>
+<p><em>prepared by <a href="mailto:youngser@jhu.edu">youngser@jhu.edu</a> on Wed Mar 1 14:04:30 2017</em></p>
 </div>
 
 

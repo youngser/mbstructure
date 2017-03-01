@@ -41,7 +41,7 @@ To run the experiemnts in the paper, please follow these steps:
 
 ### The larval _Drosophila_ mushroom body connectome
 
-Output of this chunk is shown [here](sec2.html).
+Output of this chunk is shown [here](demo/sec2.html).
 
 
 ```r
@@ -56,7 +56,7 @@ plotConnections(g, vdf)
 
 ### Spectral clustering
 
-Output of this chunk is shown [here](sec3.html).
+Output of this chunk is shown [here](demo/sec3.html).
 
 
 ```r
@@ -72,7 +72,7 @@ plotClustering(Xhat, mc, vdf)
 
 ### Semiparametric spectral modeling
 
-Output of this chunk is shown [here](sec4.html).  
+Output of this chunk is shown [here](demo/sec4.html).  
 Warning: This takes several minutes to run on my laptop!
 
 
@@ -86,7 +86,7 @@ semiout <- plotMLE(Xhat, vdf)
 
 #### Directed! Weighted?
 
-Output of this chunk is shown [here](disc-1.html).  
+Output of this chunk is shown [here](demo/disc-1.html).  
 Warning: This takes about _half an hour_ to run on my laptop!
 
 
@@ -97,7 +97,7 @@ compairARI(g, g.w, vdf)
 
 #### Synthetic validation
 
-Output of this chunk is shown [here](disc-2.html).  
+Output of this chunk is shown [here](demo/disc-2.html).  
 Warning: This takes a few minutes to run on my laptop!
 
 
@@ -107,7 +107,7 @@ syntheticValidation(g, Xhat, vdf)
 
 #### Hemispheric validation: right vs. left
 
-Output of this chunk is shown [here](disc-3.html).  
+Output of this chunk is shown [here](demo/disc-3.html).  
 Warning: This takes a few minutes to run on my laptop!
 
 
@@ -166,4 +166,4 @@ library(help='mbstructure')
 ```
 
 -----
-*prepared by <youngser@jhu.edu> on Wed Mar  1 07:46:04 2017*
+*prepared by <youngser@jhu.edu> on Wed Mar  1 14:04:30 2017*
