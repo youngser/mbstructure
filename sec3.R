@@ -25,3 +25,7 @@ vdf$cluster <- factor(mc$class)
 plotBIC(mc)
 
 plotClustering(Xhat, mc, vdf)
+
+table(type=vdf$type,Khat6=vdf$cluster)
+table(claw=vdf$claw,Khat6=vdf$cluster)
+

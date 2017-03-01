@@ -7,7 +7,7 @@
 **[Human Language Technology Center of Excellence](http://hltcoe.jhu.edu)**  
 **[Johns Hopkins University](http://www.jhu.edu)**  
 and  
-**[University of Cincinati](http://business.uc.edu)**  
+**[University of Cincinnati](http://business.uc.edu)**  
 and  
 **[HHMI Janelia Research Campus](hhmi.org)**  
 
@@ -71,7 +71,7 @@ Warning: This takes several minutes to run on my laptop!
 
 
 ```r
-sout4 <- synthMB(g, Xhat, vdf, labK=vdf$type, Khat=4, dtype="real", doplot=TRUE)
+sout4 <- synthMB(g, Xhat, vdf, labK=vdf$type, Khat=4, dtype="truth", doplot=TRUE)
 semiout <- plotMLE(Xhat, vdf) 
 ```
 
@@ -152,7 +152,7 @@ library(help='mbstructure')
 ## URL:           http://www.cis.jhu.edu/~parky/MBstructure.html
 ## LazyData:      TRUE
 ## RoxygenNote:   5.0.1
-## Built:         R 3.3.2; ; 2017-02-21 18:31:47 UTC; unix
+## Built:         R 3.3.2; ; 2017-02-22 13:43:07 UTC; unix
 ## 
 ## Index:
 ## 
@@ -160,4 +160,4 @@ library(help='mbstructure')
 ```
 
 -----
-*prepared by <youngser@jhu.edu> on Tue Feb 21 15:28:50 2017*
+*prepared by <youngser@jhu.edu> on Sat Feb 25 08:26:22 2017*

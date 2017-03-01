@@ -52,7 +52,7 @@ suppressMessages(library(xtable))
 **[Human Language Technology Center of Excellence](http://hltcoe.jhu.edu)**  
 **[Johns Hopkins University](http://www.jhu.edu)**  
 and  
-**[University of Cincinati](http://business.uc.edu)**  
+**[University of Cincinnati](http://business.uc.edu)**  
 and  
 **[HHMI Janelia Research Campus](hhmi.org)**  
 
@@ -113,7 +113,7 @@ Output of this chunk is shown [here](sec4.html).
 Warning: This takes several minutes to run on my laptop!
 
 ```{r semipar}
-sout4 <- synthMB(g, Xhat, vdf, labK=vdf$type, Khat=4, dtype="real", doplot=TRUE)
+sout4 <- synthMB(g, Xhat, vdf, labK=vdf$type, Khat=4, dtype="truth", doplot=TRUE)
 semiout <- plotMLE(Xhat, vdf) 
 ```
 

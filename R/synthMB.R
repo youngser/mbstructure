@@ -1,9 +1,9 @@
-synthMB <- function(g, Xhat, vdf, labK, Khat=6, dtype="real", doplot=TRUE)
+synthMB <- function(g, Xhat, vdf, labK, Khat=6, dtype="truth", doplot=TRUE)
 {
     suppressMessages(library(igraph))
 
     set.seed(12345)
-    if (dtype=="real") {
+    if (dtype=="truth") {
         tab <- table(vdf$type)
         Khat <- length(tab)
         ase <- embed_adjacency_matrix(g,Khat) # observed MB connectome
@@ -27,7 +27,7 @@ synthMB <- function(g, Xhat, vdf, labK, Khat=6, dtype="real", doplot=TRUE)
     ABobs10000 <- sample_sbm(sum(vec),Bobs,vec,directed=T) # monster SBM on Bobs (with balanced block proportions)
     aseBobs10000 <- embed_adjacency_matrix(ABobs10000,Khat,options = list(maxiter=2000))
 
-    if (dtype=="real") {
+    if (dtype=="truth") {
         aseBobs <- embed_adjacency_matrix(ABobs,Khat)
         aseBobsnew <- Bobsoutnew <- aseBobs10K <- labK <- NULL
     } else {
