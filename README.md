@@ -15,12 +15,12 @@ and
 
 > C.E. Priebe,  Y. Park, M. Tang, A, Athreya, V. Lyzinski, J. Vogelstein,
 Y. Qin, B. Cocanougher, K. Eichler, M. Zlatic, A. Cardona,
-"[Semiparametric spectral modeling of the Drosophila connectome](http://arxiv.org/abs/1502.03391)," _Journal of the American Statistical Association Application and Case Studies_, submmitted, 2017.
+"[Semiparametric spectral modeling of the Drosophila connectome](http://arxiv.org/abs/1502.03391)," _Journal of the American Statistical Association Application and Case Studies_, submitted, 2017.
 
 
 ## Abstract
 
-> We present semiparametric spectral modeling of the complete larval Drosophila mushroom body connectome. The resulting connectome code derived via semiparametric Gaussian mixture mod- eling composed with adjacency spectral embedding captures biologically relevant neuronal prop- erties.
+> We present semiparametric spectral modeling of the complete larval Drosophila mushroom body connectome. The resulting connectome code derived via semiparametric Gaussian mixture modeling composed with adjacency spectral embedding captures biologically relevant neuronal properties.
 
 > **Keywords**: Connectome; Network; Graph; Spectral embedding; Mixture model; Clustering
 
@@ -37,7 +37,8 @@ Our MB connectome was obtained via serial section transmission electron microsco
 
 ## Codes and Experiments
 
-To run the experiemnts in the paper, please follow these steps:
+To run the experiemnts in the paper, please follow these steps.  
+(NB: All the codes are in the `demo` folder at [github](https://github.com/youngser/mbstructure).)
 
 ### The larval _Drosophila_ mushroom body connectome
 
@@ -91,7 +92,7 @@ Warning: This takes about _half an hour_ to run on my laptop!
 
 
 ```r
-g.w <-out$g.w
+g.w <- out$g.w
 compairARI(g, g.w, vdf)
 ```
 
@@ -123,7 +124,7 @@ The latest `R` source package can be installed via:
 install.packages("http://www.cis.jhu.edu/~parky/MBstructure/mbstructure_0.1.0.tar.gz",type="source",method="wget")
 ```
 
-or
+or via `github`:
 
 
 ```r
@@ -158,12 +159,8 @@ library(help='mbstructure')
 ## URL:           http://www.cis.jhu.edu/~parky/MBstructure.html
 ## LazyData:      TRUE
 ## RoxygenNote:   5.0.1
-## Built:         R 3.3.2; ; 2017-02-25 13:26:29 UTC; unix
-## 
-## Index:
-## 
-## hello                   Hello, World!
+## Built:         R 3.3.2; ; 2017-03-23 16:14:12 UTC; unix
 ```
 
 -----
-*prepared by <youngser@jhu.edu> on Wed Mar  1 14:04:30 2017*
+*prepared by <youngser@jhu.edu> on Thu Mar 23 12:14:30 2017*
