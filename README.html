@@ -182,11 +182,20 @@ Illustration of the Drosophila Mushroom Body circuit as a (K = 4)-block directed
 <h2>Data</h2>
 <p>HHMI Janelia recently reconstructed the complete wiring diagram of the higher order parallel fiber system for associative learning in the larval Drosophila brain, the mushroom body (MB). Memories are thought to be stored as functional and structural changes in connections between neurons, but the complete circuit architecture of a higher-order learning center involved in memory formation or storage has not been known in any organism … until now. This data set provides a real and important example for initial investigation into synapse-level structural connectome modeling.</p>
 <p>Our MB connectome was obtained via serial section transmission electron microscopy of an entire larval Drosophila nervous system. This connectome contains the entirety of MB intrinsic neurons called Kenyon cells and all of their pre- and post-synaptic partners.</p>
+<p>The data, both right and left MB connectomes as well as their meta information, are included in this R package, which can be loaded via <code>data(MBconnectome)</code>.</p>
 </div>
 <div id="codes-and-experiments" class="section level2">
 <h2>Codes and Experiments</h2>
 <p>To run the experiemnts in the paper, please follow these steps.<br />
 (NB: All the codes are in the <code>demo</code> folder at <a href="https://github.com/youngser/mbstructure">github</a>.)</p>
+<div id="r-package" class="section level3">
+<h3><code>R</code> Package</h3>
+<p>The latest <code>R</code> source package can be installed via:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;http://www.cis.jhu.edu/~parky/MBstructure/mbstructure_0.1.0.tar.gz&quot;</span>,<span class="dt">type=</span><span class="st">&quot;source&quot;</span>,<span class="dt">method=</span><span class="st">&quot;wget&quot;</span>)</code></pre></div>
+<p>or via <code>github</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(devtools)
+devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;youngser/mbstructure&quot;</span>)</code></pre></div>
+</div>
 <div id="the-larval-drosophila-mushroom-body-connectome" class="section level3">
 <h3>The larval <em>Drosophila</em> mushroom body connectome</h3>
 <p>Output of this chunk is shown <a href="demo/sec2.html">here</a>.</p>
@@ -237,16 +246,6 @@ Warning: This takes a few minutes to run on my laptop!</p>
 <p>Output of this chunk is shown <a href="demo/disc-3.html">here</a>.<br />
 Warning: This takes a few minutes to run on my laptop!</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">right.vs.left</span>(Xhat, vdf, semiout<span class="op">$</span>out100)</code></pre></div>
-</div>
-</div>
-</div>
-<div id="r-package" class="section level2">
-<h2><code>R</code> Package</h2>
-<p>The latest <code>R</code> source package can be installed via:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;http://www.cis.jhu.edu/~parky/MBstructure/mbstructure_0.1.0.tar.gz&quot;</span>,<span class="dt">type=</span><span class="st">&quot;source&quot;</span>,<span class="dt">method=</span><span class="st">&quot;wget&quot;</span>)</code></pre></div>
-<p>or via <code>github</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(devtools)
-devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;youngser/mbstructure&quot;</span>)</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="dt">help=</span><span class="st">'mbstructure'</span>)</code></pre></div>
 <pre><code>##      Information on package 'mbstructure'
 ## 
@@ -271,7 +270,9 @@ devtools<span class="op">::</span><span class="kw">install_github</span>(<span c
 ## RoxygenNote:   5.0.1
 ## Built:         R 3.3.2; ; 2017-03-23 16:14:12 UTC; unix</code></pre>
 <hr />
-<p><em>prepared by <a href="mailto:youngser@jhu.edu">youngser@jhu.edu</a> on Thu Mar 23 12:14:30 2017</em></p>
+<p><em>prepared by <a href="mailto:youngser@jhu.edu">youngser@jhu.edu</a> on Thu Mar 23 13:54:11 2017</em></p>
+</div>
+</div>
 </div>
 
 
