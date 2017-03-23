@@ -26,7 +26,7 @@ Y. Qin, B. Cocanougher, K. Eichler, M. Zlatic, A. Cardona,
 
 <figure>
 <img src="diagram-circuit.jpg" width="700px" />
-  <figcaption>Illustration of the Drosophila Mushroom Body circuit as a (K = 4)-block directed stochastic block model. This first-order simplification of the structure of the circuit provides a framework for graph embedding inference, and for subsequent Knowledge Base interaction.</figcaption>
+  <figcaption>Illustration of the larval Drosophila mushroom body connectome as a directed graph on four neuron types.</figcaption>
 </figure>
 
 ## Data
@@ -60,7 +60,7 @@ devtools::install_github("youngser/mbstructure")
 
 ### The larval _Drosophila_ mushroom body connectome
 
-Output of this chunk is shown [here](demo/sec2.html).
+Output of this chunk (Figure 2) is shown [here](demo/sec2.html).
 
 
 ```r
@@ -75,7 +75,7 @@ plotConnections(g, vdf)
 
 ### Spectral clustering
 
-Output of this chunk is shown [here](demo/sec3.html).
+Output of this chunk (Figures 3, 5, 6, 7, Tables 1, 7) is shown [here](demo/sec3.html).
 
 
 ```r
@@ -91,7 +91,7 @@ plotClustering(Xhat, mc, vdf)
 
 ### Semiparametric spectral modeling
 
-Output of this chunk is shown [here](demo/sec4.html).  
+Output of this chunk (Figures 8, 9, 10, 11, 12, 13) is shown [here](demo/sec4.html).  
 Warning: This takes several minutes to run on my laptop!
 
 
@@ -105,7 +105,7 @@ semiout <- plotMLE(Xhat, vdf)
 
 #### Directed! Weighted?
 
-Output of this chunk is shown [here](demo/disc-1.html).  
+Output of this chunk (Figure 14) is shown [here](demo/disc-1.html).  
 Warning: This takes about _half an hour_ to run on my laptop!
 
 
@@ -116,7 +116,7 @@ compairARI(g, g.w, vdf)
 
 #### Synthetic validation
 
-Output of this chunk is shown [here](demo/disc-2.html).  
+Output of this chunk (Figure 15) is shown [here](demo/disc-2.html).  
 Warning: This takes a few minutes to run on my laptop!
 
 
@@ -126,7 +126,7 @@ syntheticValidation(g, Xhat, vdf)
 
 #### Hemispheric validation: right vs. left
 
-Output of this chunk is shown [here](demo/disc-3.html).  
+Output of this chunk (Figure 16) is shown [here](demo/disc-3.html).  
 Warning: This takes a few minutes to run on my laptop!
 
 
@@ -134,6 +134,7 @@ Warning: This takes a few minutes to run on my laptop!
 right.vs.left(Xhat, vdf, semiout$out100)
 ```
 
+## Software and Hardware Information
 
 
 ```r
@@ -196,4 +197,4 @@ sessionInfo()
 ```
 
 -----
-*prepared by <youngser@jhu.edu> on Thu Mar 23 13:56:21 2017*
+*prepared by <youngser@jhu.edu> on Thu Mar 23 14:35:56 2017*
