@@ -165,5 +165,35 @@ library(help='mbstructure')
 ## Built:         R 3.3.2; ; 2017-03-23 16:14:12 UTC; unix
 ```
 
+```r
+sessionInfo()
+```
+
+```
+## R version 3.3.2 (2016-10-31)
+## Platform: x86_64-apple-darwin13.4.0 (64-bit)
+## Running under: macOS Sierra 10.12.3
+## 
+## locale:
+## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+## 
+## attached base packages:
+## [1] stats     graphics  grDevices utils     datasets  methods   base     
+## 
+## other attached packages:
+##  [1] xtable_1.8-2       printr_0.0.6       mvtnorm_1.0-5     
+##  [4] packcircles_0.1.1  RColorBrewer_1.1-2 mclust_5.2.2      
+##  [7] lattice_0.20-34    Matrix_1.2-7.1     igraph_1.1.0      
+## [10] ggplot2_2.2.1      knitr_1.15.1      
+## 
+## loaded via a namespace (and not attached):
+##  [1] Rcpp_0.12.9      magrittr_1.5     munsell_0.4.3    colorspace_1.3-2
+##  [5] stringr_1.1.0    plyr_1.8.4       tools_3.3.2      grid_3.3.2      
+##  [9] gtable_0.2.0     htmltools_0.3.5  yaml_2.1.14      lazyeval_0.2.0  
+## [13] rprojroot_1.2    digest_0.6.12    assertthat_0.1   tibble_1.2      
+## [17] evaluate_0.10    rmarkdown_1.3    stringi_1.1.2    scales_0.4.1    
+## [21] backports_1.0.4  pkgconfig_2.0.0
+```
+
 -----
-*prepared by <youngser@jhu.edu> on Thu Mar 23 13:54:11 2017*
+*prepared by <youngser@jhu.edu> on Thu Mar 23 13:56:21 2017*
