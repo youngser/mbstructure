@@ -20,7 +20,7 @@ Y. Qin, B. Cocanougher, K. Eichler, M. Zlatic, A. Cardona,
 
 ## Abstract
 
-> We present semiparametric spectral modeling of the complete larval Drosophila mushroom body connectome. The resulting connectome code derived via semiparametric Gaussian mixture modeling composed with adjacency spectral embedding captures biologically relevant neuronal properties.
+We present semiparametric spectral modeling of the complete larval Drosophila mushroom body connectome. Motivated by a thorough exploratory data analysis of the network via Gaussian mixture modeling (GMM) in the adjacency spectral embedding (ASE) representation space, we introduce the stochastic structure model (SSM) for network modeling and inference. SSM is a generalization of the stochastic block model (SBM) and a special case of the random dot product graph (RDPG) latent position model, and is amenable to semiparametric GMM in the ASE representation space. The resulting connectome code derived via semiparametric GMM composed with ASE captures latent connectome structure and elucidates biologically relevant neuronal properties.
 
 > **Keywords**: Connectome; Network; Graph; Spectral embedding; Mixture model; Clustering
 
@@ -197,4 +197,4 @@ sessionInfo()
 ```
 
 -----
-*prepared by <youngser@jhu.edu> on Thu Mar 23 14:35:56 2017*
+*prepared by <youngser@jhu.edu> on Thu Mar 23 14:44:47 2017*
