@@ -199,6 +199,11 @@ plotMLE <- function(Xhat, vdf)
     dd3 <- subset(dd, type2!="KC")    # ellipse
     dd4 <- data.frame(x=means[,1],y=means[,2],sdx=vars[,1],sdy=vars[,2])
     tmpcol <- gg_color_hue(2)
+
+    type <- names(table(dd$type))[-1]
+    means2 <- t(sapply(type, function(x) colMeans(dd[dd$type2==x,1:2])))
+    means2 <- data.frame(x=means2[,1],y=means2[,2],col=factor(type))
+
  #   p3 <- p3 + stat_ellipse(data=dd3,geom="polygon",aes(fill=type2,color=type2),alpha=.2,show.legend=F) +
  #       geom_line(data=dd4,color="darkred",size=1.5) +
  #       geom_ribbon(data=dd4,aes(ymin=y-1.96*sdx,ymax=y+1.96*sdy),alpha=0.2,fill="darkred")
@@ -211,6 +216,7 @@ plotMLE <- function(Xhat, vdf)
         scale_shape_manual(values=as.character(1:Khat)) #+
     p3 <- p3 + stat_ellipse(data=dd3,geom="polygon",aes(fill=type2,color=type2),alpha=.2,show.legend=F) +
         geom_line(data=dd4,color="darkred",size=1.5) + coord_equal() +
+        geom_point(data=means2, aes(x=x,y=y,color=col),size=5,show.legend=FALSE) +
         xlab("out 1") + ylab("out 2")
     print(p3)
 

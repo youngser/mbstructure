@@ -1,4 +1,4 @@
-synthMB <- function(g, Xhat, vdf, labK, Khat=6, dtype="truth", doplot=TRUE)
+synthMB <- function(g, vdf, labK, Khat=6, dtype="truth", doplot=TRUE)
 {
     suppressMessages(library(igraph))
 

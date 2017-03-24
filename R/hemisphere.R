@@ -48,6 +48,10 @@ right.vs.left <- function(Xhat, vdf, out100)
     dd.left$side <- "left hemisphere MB"
     dd.all <- rbind(dd.right,dd.left)
 
+    type <- names(table(dd.all$type))[-1]
+    means <- t(sapply(type, function(x) colMeans(dd.all[dd.all$type2==x,1:2])))
+    means <- data.frame(x=means[,1],y=means[,2],col=factor(type))
+
     layout <- data.frame(id=1:nrow(dd4), x=dd4$x, y=dd4$y, r=1.96*dd4$sdx)
     cir <- circlePlotData(layout, id.col=1, xyr.cols=2:4)
 
@@ -58,6 +62,7 @@ right.vs.left <- function(Xhat, vdf, out100)
         facet_wrap(~side) +
         stat_ellipse(data=dd3,geom="polygon",aes(fill=type2,color=type2), alpha=.2, show.legend=FALSE) +
         geom_line(data=dd4,color="darkred",size=1.5) +
+        geom_point(data=means, aes(x=x,y=y,color=col),size=5,show.legend=FALSE) +
         #    geom_ribbon(data=dd4,aes(ymin=y-1.96*sdx,ymax=y+1.96*sdy),alpha=0.2,fill="darkred") +
         xlab("out 1") + ylab("out 2")
     print(p5)
