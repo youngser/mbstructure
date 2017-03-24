@@ -1,7 +1,7 @@
+# Semiparametric spectral modeling of the Drosophila connectome
 
 
 
-## Semiparametric spectral modeling of the Drosophila connectome
 **[Department of Applied Mathematics and Statistics](http://engineering.jhu.edu/ams/)**      
 **[Center for Imaging Science](http://www.cis.jhu.edu)**  
 **[Human Language Technology Center of Excellence](http://hltcoe.jhu.edu)**  
@@ -18,7 +18,7 @@ Y. Qin, B. Cocanougher, K. Eichler, M. Zlatic, A. Cardona,
 "[Semiparametric spectral modeling of the Drosophila connectome](http://arxiv.org/abs/1502.03391)," _Journal of the American Statistical Association Application and Case Studies_, submitted, 2017.
 
 
-## Abstract
+# Abstract
 
 We present semiparametric spectral modeling of the complete larval Drosophila mushroom body connectome. Motivated by a thorough exploratory data analysis of the network via Gaussian mixture modeling (GMM) in the adjacency spectral embedding (ASE) representation space, we introduce the stochastic structure model (SSM) for network modeling and inference. SSM is a generalization of the stochastic block model (SBM) and a special case of the random dot product graph (RDPG) latent position model, and is amenable to semiparametric GMM in the ASE representation space. The resulting connectome code derived via semiparametric GMM composed with ASE captures latent connectome structure and elucidates biologically relevant neuronal properties.
 
@@ -29,20 +29,20 @@ We present semiparametric spectral modeling of the complete larval Drosophila mu
   <figcaption>Illustration of the larval Drosophila mushroom body connectome as a directed graph on four neuron types.</figcaption>
 </figure>
 
-## Data
+# Data
 
 HHMI Janelia recently reconstructed the complete wiring diagram of the higher order parallel fiber system for associative learning in the larval Drosophila brain, the mushroom body (MB). Memories are thought to be stored as functional and structural changes in connections between neurons, but the complete circuit architecture of a higher-order learning center involved in memory formation or storage has not been known in any organism ... until now. This data set provides a real and important example for initial investigation into synapse-level structural connectome modeling.  
 
 Our MB connectome was obtained via serial section transmission electron microscopy of an entire larval Drosophila nervous system. This connectome contains the entirety of MB intrinsic neurons called Kenyon cells and all of their pre- and post-synaptic partners.
 
-The data, both right and left MB connectomes as well as their meta information, are included in this R package and can be loaded into `R` via `data(MBconnectome)`.
+The data, both right and left MB connectomes as well as their meta information, are included in this R package and can be loaded into `R` via `data(MBconnectome)`. See below demos for the details.
 
-## Codes and Experiments
+# Codes and Experiments
 
 To run the experiemnts in the paper, please follow these steps.  
 (NB: All the codes are in the `demo` folder at [github](https://github.com/youngser/mbstructure).)
 
-### `R` Package
+## `R` Package
 
 The latest `R` source package can be installed via:
 
@@ -58,7 +58,7 @@ require(devtools)
 devtools::install_github("youngser/mbstructure")
 ```
 
-### The larval _Drosophila_ mushroom body connectome
+## The larval _Drosophila_ mushroom body connectome
 
 Output of this chunk (Figure 2) is shown [here](demo/sec2.html).
 
@@ -73,7 +73,7 @@ vdf <- out$vdf
 plotConnections(g, vdf)
 ```
 
-### Spectral clustering
+## Spectral clustering
 
 Output of this chunk (Figures 3, 5, 6, 7, Tables 1, 7) is shown [here](demo/sec3.html).
 
@@ -89,7 +89,7 @@ plotBIC(mc)
 plotClustering(Xhat, mc, vdf)
 ```
 
-### Semiparametric spectral modeling
+## Semiparametric spectral modeling
 
 Output of this chunk (Figures 8, 9, 10, 11, 12, 13) is shown [here](demo/sec4.html).  
 Warning: This takes several minutes to run on my laptop!
@@ -101,9 +101,9 @@ semiout <- plotMLE(Xhat, vdf)
 ```
 
 
-### Discussion
+## Discussion
 
-#### Directed! Weighted?
+### Directed! Weighted?
 
 Output of this chunk (Figure 14) is shown [here](demo/disc-1.html).  
 Warning: This takes about _half an hour_ to run on my laptop!
@@ -114,7 +114,7 @@ g.w <- out$g.w
 compairARI(g, g.w, vdf)
 ```
 
-#### Synthetic validation
+### Synthetic validation
 
 Output of this chunk (Figure 15) is shown [here](demo/disc-2.html).  
 Warning: This takes a few minutes to run on my laptop!
@@ -124,7 +124,7 @@ Warning: This takes a few minutes to run on my laptop!
 syntheticValidation(g, Xhat, vdf)
 ```
 
-#### Hemispheric validation: right vs. left
+### Hemispheric validation: right vs. left
 
 Output of this chunk (Figure 16) is shown [here](demo/disc-3.html).  
 Warning: This takes a few minutes to run on my laptop!
@@ -134,7 +134,7 @@ Warning: This takes a few minutes to run on my laptop!
 right.vs.left(Xhat, vdf, semiout$out100)
 ```
 
-## Software and Hardware Information
+# Software and Hardware Information
 
 
 ```r
@@ -163,7 +163,7 @@ library(help='mbstructure')
 ## URL:           http://www.cis.jhu.edu/~parky/MBstructure.html
 ## LazyData:      TRUE
 ## RoxygenNote:   5.0.1
-## Built:         R 3.3.2; ; 2017-03-23 16:14:12 UTC; unix
+## Built:         R 3.3.2; ; 2017-03-24 12:25:33 UTC; unix
 ```
 
 ```r
@@ -197,4 +197,4 @@ sessionInfo()
 ```
 
 -----
-*prepared by <youngser@jhu.edu> on Thu Mar 23 14:46:55 2017*
+*prepared by <youngser@jhu.edu> on Fri Mar 24 08:45:43 2017*
