@@ -35,7 +35,7 @@ HHMI Janelia recently reconstructed the complete wiring diagram of the higher or
 
 Our MB connectome was obtained via serial section transmission electron microscopy of an entire larval Drosophila nervous system. This connectome contains the entirety of MB intrinsic neurons called Kenyon cells and all of their pre- and post-synaptic partners.
 
-The data, both right and left MB connectomes as well as their meta information, are included in this R package and can be loaded into `R` via `data(MBconnectome)`. See below demos for the details.
+The data, both right and left MB connectomes as well as their meta information, are included in this `R` package and can be loaded into `R` via `data(MBconnectome)`. See below demos for the details.
 
 # Codes and Experiments
 
@@ -50,7 +50,7 @@ The latest `R` source package can be installed via:
 install.packages("http://www.cis.jhu.edu/~parky/MBstructure/mbstructure_0.1.0.tar.gz",type="source",method="wget")
 ```
 
-or via `github`:
+or through `github`:
 
 
 ```r
@@ -197,4 +197,4 @@ sessionInfo()
 ```
 
 -----
-*prepared by <youngser@jhu.edu> on Fri Mar 24 08:45:43 2017*
+*prepared by <youngser@jhu.edu> on Fri Mar 24 09:06:03 2017*

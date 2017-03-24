@@ -36,7 +36,18 @@ right.vs.left <- function(Xhat, vdf, out100)
     mytab.left <- table(vdf.left$type,mc.left$class)
     type2.left <- factor(rownames(mytab.left)[apply(mytab.left,2,which.max)])
     type2.left <- type2.left[mc.left$class]
-    dd.left <- data.frame(x=-Xhat.left[,1],y=Xhat.left[,2],type=vdf.left$type, type2=type2.left)
+
+    ## find the best sign combinations == minimizing nonpar stat
+    stat <- matrix(0,2,2)
+    ind <- 1
+    for (i in 1:2) {
+        for (j in 1:2) {
+            stat[i,j] <- kernel.stat(Xhat.left[,1:2] %*% diag(c((-1)^i,(-1)^j)), Xhat[,1:2])
+        }
+    }
+    min.stat <- which(stat==min(stat), arr.ind=TRUE)
+    Xhat.left <- Xhat.left[,1:2] %*% diag(c((-1)^min.stat[1], (-1)^min.stat[2]))
+    dd.left <- data.frame(x=Xhat.left[,1],y=Xhat.left[,2],type=vdf.left$type, type2=type2.left)
 
     p4 <- p3 + geom_point(data=dd.left, aes(x=x,y=y,color=type),alpha=0.7)
     #p4

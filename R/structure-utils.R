@@ -43,3 +43,29 @@ gg_color_hue <- function(n,alpha=1) {
     hues = seq(15, 375, length = n + 1)
     hcl(h = hues, l = 65, c = 100, alpha = alpha)[1:n]
 }
+
+rect.dist <- function(X,Y){
+    X <- as.matrix(X)
+    Y <- as.matrix(Y)
+    n <- nrow(X)
+    m <- nrow(Y)
+    tmp1 <- X%*%t(Y)
+    tmp2 <- outer(rep(1, n), rowSums(Y^2))
+    tmp3 <- outer(rowSums(X^2), rep(1,m))
+
+    D <- tmp2 - 2*tmp1 + tmp3
+    return(D)
+}
+
+kernel.stat <- function(X,Y,sigma=0.2){
+    n <- nrow(X)
+    m <- nrow(Y)
+
+    tmpXX <- sum(exp(-(as.matrix(dist(X))^2)/(2*sigma^2))) - n
+    tmpYY <- sum(exp(-(as.matrix(dist(Y))^2)/(2*sigma^2))) - m
+    tmpXY <- sum(exp(-(rect.dist(X,Y))/(2*sigma^2)))
+
+    tmp <- tmpXX/(n*(n-1)) + tmpYY/(m*(m-1)) - 2*tmpXY/(m*n)
+
+    return((m+n)*tmp)
+}
