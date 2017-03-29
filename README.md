@@ -37,7 +37,7 @@ Our MB connectome was obtained via serial section transmission electron microsco
 
 The data, both right and left MB connectomes as well as their meta information, are included in this `R` package and can be loaded into `R` via `data(MBconnectome)`. See below demos for the details.
 
-# Codes and Experiments
+# Codes and Demos
 
 To run the experiemnts in the paper, please follow these steps.  
 (NB: All the codes are in the `demo` folder at [github](https://github.com/youngser/mbstructure).)
@@ -58,81 +58,41 @@ require(devtools)
 devtools::install_github("youngser/mbstructure")
 ```
 
-## The larval _Drosophila_ mushroom body connectome
+## Demos
 
-Output of this chunk (Figure 2) is shown [here](demo/sec2.html).
+To reproduce most of the Figures and Tables in the manuscript, please follow these steps:
 
 
 ```r
 library(mbstructure)
-data(MBconnectome)
 
-out <- generate.graph(newrdat, vdf.right)
-g <- out$g
-vdf <- out$vdf
-plotConnections(g, vdf)
+# Figure 2 in Section 2
+demo(sec2)
+
+# Figures 3, 5, 6, 7 and Tables 1 & 7 in Section 3
+demo(sec3)
+
+# Figures 8, 9, 10, 11, 12, 13 in Section 4
+demo(sec4) # Warning: This takes several minutes to run on my laptop!
+
+# FIgure 14 in Section 5.1.1
+demo(sec511) # Warning: This takes about half an hour to run on my laptop!
+
+# Figure 15 in Section 5.1.2
+demo(sec512) # Warning: This takes a few minutes to run on my laptop!
+
+#Figure 16 in Section 5.1.4
+demo(sec514) # Warning: This takes a few minutes to run on my laptop!
 ```
 
-## Spectral clustering
+The outputs of the demos are here:
 
-Output of this chunk (Figures 3, 5, 6, 7, Tables 1, 7) is shown [here](demo/sec3.html).
-
-
-```r
-dmax <- 50
-Xhat <- doEmbed(g, dmax)
-
-Kmax <- 19
-mc <- Mclust(Xhat, 2:Kmax)
-vdf$cluster <- factor(mc$class)
-plotBIC(mc)
-plotClustering(Xhat, mc, vdf)
-```
-
-## Semiparametric spectral modeling
-
-Output of this chunk (Figures 8, 9, 10, 11, 12, 13) is shown [here](demo/sec4.html).  
-Warning: This takes several minutes to run on my laptop!
-
-
-```r
-sout4 <- synthMB(g, Xhat, vdf, labK=vdf$type, Khat=4, dtype="truth", doplot=TRUE)
-semiout <- plotMLE(Xhat, vdf) 
-```
-
-
-## Discussion
-
-### Directed! Weighted?
-
-Output of this chunk (Figure 14) is shown [here](demo/disc-1.html).  
-Warning: This takes about _half an hour_ to run on my laptop!
-
-
-```r
-g.w <- out$g.w
-compairARI(g, g.w, vdf)
-```
-
-### Synthetic validation
-
-Output of this chunk (Figure 15) is shown [here](demo/disc-2.html).  
-Warning: This takes a few minutes to run on my laptop!
-
-
-```r
-syntheticValidation(g, Xhat, vdf)
-```
-
-### Hemispheric validation: right vs. left
-
-Output of this chunk (Figure 16) is shown [here](demo/disc-3.html).  
-Warning: This takes a few minutes to run on my laptop!
-
-
-```r
-right.vs.left(Xhat, vdf, semiout$out100)
-```
+* [Section 2](demo/sec2.html)
+* [Section 3](demo/sec3.html)
+* [Section 4](demo/sec4.html)
+* [Section 5.1.1](demo/sec511.html)
+* [Section 5.1.2](demo/sec512.html)
+* [Section 5.1.4](demo/sec514.html)
 
 # Software and Hardware Information
 
@@ -163,7 +123,7 @@ library(help='mbstructure')
 ## URL:           http://www.cis.jhu.edu/~parky/MBstructure.html
 ## LazyData:      TRUE
 ## RoxygenNote:   5.0.1
-## Built:         R 3.3.2; ; 2017-03-24 12:25:33 UTC; unix
+## Built:         R 3.3.2; ; 2017-03-28 16:47:42 UTC; unix
 ```
 
 ```r
@@ -197,4 +157,4 @@ sessionInfo()
 ```
 
 -----
-*prepared by <youngser@jhu.edu> on Fri Mar 24 09:06:03 2017*
+*prepared by <youngser@jhu.edu> on Tue Mar 28 14:13:40 2017*

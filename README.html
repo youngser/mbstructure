@@ -180,8 +180,8 @@ Illustration of the larval Drosophila mushroom body connectome as a directed gra
 <p>Our MB connectome was obtained via serial section transmission electron microscopy of an entire larval Drosophila nervous system. This connectome contains the entirety of MB intrinsic neurons called Kenyon cells and all of their pre- and post-synaptic partners.</p>
 <p>The data, both right and left MB connectomes as well as their meta information, are included in this <code>R</code> package and can be loaded into <code>R</code> via <code>data(MBconnectome)</code>. See below demos for the details.</p>
 </div>
-<div id="codes-and-experiments" class="section level1">
-<h1><span class="header-section-number">3</span> Codes and Experiments</h1>
+<div id="codes-and-demos" class="section level1">
+<h1><span class="header-section-number">3</span> Codes and Demos</h1>
 <p>To run the experiemnts in the paper, please follow these steps.<br />
 (NB: All the codes are in the <code>demo</code> folder at <a href="https://github.com/youngser/mbstructure">github</a>.)</p>
 <div id="r-package" class="section level2">
@@ -192,57 +192,37 @@ Illustration of the larval Drosophila mushroom body connectome as a directed gra
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(devtools)
 devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;youngser/mbstructure&quot;</span>)</code></pre></div>
 </div>
-<div id="the-larval-drosophila-mushroom-body-connectome" class="section level2">
-<h2><span class="header-section-number">3.2</span> The larval <em>Drosophila</em> mushroom body connectome</h2>
-<p>Output of this chunk (Figure 2) is shown <a href="demo/sec2.html">here</a>.</p>
+<div id="demos" class="section level2">
+<h2><span class="header-section-number">3.2</span> Demos</h2>
+<p>To reproduce most of the Figures and Tables in the manuscript, please follow these steps:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(mbstructure)
-<span class="kw">data</span>(MBconnectome)
 
-out &lt;-<span class="st"> </span><span class="kw">generate.graph</span>(newrdat, vdf.right)
-g &lt;-<span class="st"> </span>out<span class="op">$</span>g
-vdf &lt;-<span class="st"> </span>out<span class="op">$</span>vdf
-<span class="kw">plotConnections</span>(g, vdf)</code></pre></div>
-</div>
-<div id="spectral-clustering" class="section level2">
-<h2><span class="header-section-number">3.3</span> Spectral clustering</h2>
-<p>Output of this chunk (Figures 3, 5, 6, 7, Tables 1, 7) is shown <a href="demo/sec3.html">here</a>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dmax &lt;-<span class="st"> </span><span class="dv">50</span>
-Xhat &lt;-<span class="st"> </span><span class="kw">doEmbed</span>(g, dmax)
+<span class="co"># Figure 2 in Section 2</span>
+<span class="kw">demo</span>(sec2)
 
-Kmax &lt;-<span class="st"> </span><span class="dv">19</span>
-mc &lt;-<span class="st"> </span><span class="kw">Mclust</span>(Xhat, <span class="dv">2</span><span class="op">:</span>Kmax)
-vdf<span class="op">$</span>cluster &lt;-<span class="st"> </span><span class="kw">factor</span>(mc<span class="op">$</span>class)
-<span class="kw">plotBIC</span>(mc)
-<span class="kw">plotClustering</span>(Xhat, mc, vdf)</code></pre></div>
-</div>
-<div id="semiparametric-spectral-modeling" class="section level2">
-<h2><span class="header-section-number">3.4</span> Semiparametric spectral modeling</h2>
-<p>Output of this chunk (Figures 8, 9, 10, 11, 12, 13) is shown <a href="demo/sec4.html">here</a>.<br />
-Warning: This takes several minutes to run on my laptop!</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sout4 &lt;-<span class="st"> </span><span class="kw">synthMB</span>(g, Xhat, vdf, <span class="dt">labK=</span>vdf<span class="op">$</span>type, <span class="dt">Khat=</span><span class="dv">4</span>, <span class="dt">dtype=</span><span class="st">&quot;truth&quot;</span>, <span class="dt">doplot=</span><span class="ot">TRUE</span>)
-semiout &lt;-<span class="st"> </span><span class="kw">plotMLE</span>(Xhat, vdf) </code></pre></div>
-</div>
-<div id="discussion" class="section level2">
-<h2><span class="header-section-number">3.5</span> Discussion</h2>
-<div id="directed-weighted" class="section level3">
-<h3><span class="header-section-number">3.5.1</span> Directed! Weighted?</h3>
-<p>Output of this chunk (Figure 14) is shown <a href="demo/disc-1.html">here</a>.<br />
-Warning: This takes about <em>half an hour</em> to run on my laptop!</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g.w &lt;-<span class="st"> </span>out<span class="op">$</span>g.w
-<span class="kw">compairARI</span>(g, g.w, vdf)</code></pre></div>
-</div>
-<div id="synthetic-validation" class="section level3">
-<h3><span class="header-section-number">3.5.2</span> Synthetic validation</h3>
-<p>Output of this chunk (Figure 15) is shown <a href="demo/disc-2.html">here</a>.<br />
-Warning: This takes a few minutes to run on my laptop!</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">syntheticValidation</span>(g, Xhat, vdf)</code></pre></div>
-</div>
-<div id="hemispheric-validation-right-vs.left" class="section level3">
-<h3><span class="header-section-number">3.5.3</span> Hemispheric validation: right vs. left</h3>
-<p>Output of this chunk (Figure 16) is shown <a href="demo/disc-3.html">here</a>.<br />
-Warning: This takes a few minutes to run on my laptop!</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">right.vs.left</span>(Xhat, vdf, semiout<span class="op">$</span>out100)</code></pre></div>
-</div>
+<span class="co"># Figures 3, 5, 6, 7 and Tables 1 &amp; 7 in Section 3</span>
+<span class="kw">demo</span>(sec3)
+
+<span class="co"># Figures 8, 9, 10, 11, 12, 13 in Section 4</span>
+<span class="kw">demo</span>(sec4) <span class="co"># Warning: This takes several minutes to run on my laptop!</span>
+
+<span class="co"># FIgure 14 in Section 5.1.1</span>
+<span class="kw">demo</span>(sec511) <span class="co"># Warning: This takes about half an hour to run on my laptop!</span>
+
+<span class="co"># Figure 15 in Section 5.1.2</span>
+<span class="kw">demo</span>(sec512) <span class="co"># Warning: This takes a few minutes to run on my laptop!</span>
+
+<span class="co">#Figure 16 in Section 5.1.4</span>
+<span class="kw">demo</span>(sec514) <span class="co"># Warning: This takes a few minutes to run on my laptop!</span></code></pre></div>
+<p>The outputs of the demos are here:</p>
+<ul>
+<li><a href="demo/sec2.html">Section 2</a></li>
+<li><a href="demo/sec3.html">Section 3</a></li>
+<li><a href="demo/sec4.html">Section 4</a></li>
+<li><a href="demo/sec511.html">Section 5.1.1</a></li>
+<li><a href="demo/sec512.html">Section 5.1.2</a></li>
+<li><a href="demo/sec514.html">Section 5.1.4</a></li>
+</ul>
 </div>
 </div>
 <div id="software-and-hardware-information" class="section level1">
@@ -269,7 +249,7 @@ Warning: This takes a few minutes to run on my laptop!</p>
 ## URL:           http://www.cis.jhu.edu/~parky/MBstructure.html
 ## LazyData:      TRUE
 ## RoxygenNote:   5.0.1
-## Built:         R 3.3.2; ; 2017-03-24 12:25:33 UTC; unix</code></pre>
+## Built:         R 3.3.2; ; 2017-03-28 16:47:42 UTC; unix</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sessionInfo</span>()</code></pre></div>
 <pre><code>## R version 3.3.2 (2016-10-31)
 ## Platform: x86_64-apple-darwin13.4.0 (64-bit)
@@ -295,7 +275,7 @@ Warning: This takes a few minutes to run on my laptop!</p>
 ## [17] evaluate_0.10    rmarkdown_1.3    stringi_1.1.2    scales_0.4.1    
 ## [21] backports_1.0.4  pkgconfig_2.0.0</code></pre>
 <hr />
-<p><em>prepared by <a href="mailto:youngser@jhu.edu">youngser@jhu.edu</a> on Fri Mar 24 09:06:03 2017</em></p>
+<p><em>prepared by <a href="mailto:youngser@jhu.edu">youngser@jhu.edu</a> on Tue Mar 28 14:13:40 2017</em></p>
 </div>
 
 
