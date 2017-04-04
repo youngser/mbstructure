@@ -25,7 +25,7 @@ We present semiparametric spectral modeling of the complete larval Drosophila mu
 > **Keywords**: Connectome; Network; Graph; Spectral embedding; Mixture model; Clustering
 
 <figure>
-<img src="diagram-circuit.jpg" width="700px" />
+<img src="vignettes/diagram-circuit.jpg" width="700px" />
   <figcaption>Illustration of the larval Drosophila mushroom body connectome as a directed graph on four neuron types.</figcaption>
 </figure>
 
@@ -47,7 +47,7 @@ To run the experiemnts in the paper, please follow these steps.
 The latest `R` source package can be installed via:
 
 ```r
-install.packages("http://www.cis.jhu.edu/~parky/MBstructure/mbstructure_0.1.0.tar.gz",type="source",method="wget")
+install.packages("http://www.cis.jhu.edu/~parky/MBstructure/mbstructure_0.1.0.tar.gz",type="source")
 ```
 
 or through `github`:
@@ -75,24 +75,24 @@ demo(sec3)
 # Figures 8, 9, 10, 11, 12, 13 in Section 4
 demo(sec4) # Warning: This takes several minutes to run on my laptop!
 
-# FIgure 14 in Section 5.1.1
+# Figure 14 in Section 5.1.1
 demo(sec511) # Warning: This takes about half an hour to run on my laptop!
 
 # Figure 15 in Section 5.1.2
 demo(sec512) # Warning: This takes a few minutes to run on my laptop!
 
-#Figure 16 in Section 5.1.4
+# Figure 16 in Section 5.1.4
 demo(sec514) # Warning: This takes a few minutes to run on my laptop!
 ```
 
 The outputs of the demos are here:
 
-* [Section 2](demo/sec2.html)
-* [Section 3](demo/sec3.html)
-* [Section 4](demo/sec4.html)
-* [Section 5.1.1](demo/sec511.html)
-* [Section 5.1.2](demo/sec512.html)
-* [Section 5.1.4](demo/sec514.html)
+* [Section 2](http://www.cis.jhu.edu/~parky/MBstructure/demo/sec2.html)
+* [Section 3](http://www.cis.jhu.edu/~parky/MBstructure/demo/sec3.html)
+* [Section 4](http://www.cis.jhu.edu/~parky/MBstructure/demo/sec4.html)
+* [Section 5.1.1](http://www.cis.jhu.edu/~parky/MBstructure/demo/sec511.html)
+* [Section 5.1.2](http://www.cis.jhu.edu/~parky/MBstructure/demo/sec512.html)
+* [Section 5.1.4](http://www.cis.jhu.edu/~parky/MBstructure/demo/sec514.html)
 
 # Software and Hardware Information
 
@@ -106,24 +106,32 @@ library(help='mbstructure')
 ## 
 ## Description:
 ## 
-## Package:       mbstructure
-## Type:          Package
-## Title:         Semiparametric spectral modeling of the complete
-##                larval Drosophila mushroom body connectome
-## Version:       0.1.0
-## Depends:       R (>= 3.0)
-## Imports:       igraph, Matrix, lattice, ggplot2, mclust, irlba,
-##                mvtnorm, RColorBrewer, packcircles
-## Author:        Youngser Park, Yichen Qin
-## Maintainer:    Youngser Park <youngser@jhu.edu>
-## Description:   Routine to perform semiparametric spectral modeling
-##                of the complete larval Drosophila mushroom body
-##                connectome.
-## License:       GPL (>= 2)
-## URL:           http://www.cis.jhu.edu/~parky/MBstructure.html
-## LazyData:      TRUE
-## RoxygenNote:   5.0.1
-## Built:         R 3.3.2; ; 2017-03-28 16:47:42 UTC; unix
+## Package:           mbstructure
+## Type:              Package
+## Title:             Semiparametric spectral modeling of the
+##                    complete larval Drosophila mushroom body
+##                    connectome
+## Version:           0.1.0
+## Depends:           R (>= 3.0)
+## Imports:           igraph, Matrix, lattice, ggplot2, mclust,
+##                    irlba, mvtnorm, RColorBrewer, packcircles
+## Author:            Youngser Park, Yichen Qin
+## Maintainer:        Youngser Park <youngser@jhu.edu>
+## Description:       Routine to perform semiparametric spectral
+##                    modeling of the complete larval Drosophila
+##                    mushroom body connectome.
+## License:           GPL (>= 2)
+## URL:               http://www.cis.jhu.edu/~parky/MBstructure.html
+## LazyData:          TRUE
+## RoxygenNote:       5.0.1
+## Suggests:          knitr, rmarkdown
+## VignetteBuilder:   knitr
+## Built:             R 3.3.2; ; 2017-04-04 15:46:07 UTC; unix
+## 
+## Further information is available in the following vignettes in
+## directory '/Users/parky/RFolder/mbstructure/doc':
+## 
+## mbstructure: MBstructure (source, pdf)
 ```
 
 ```r
@@ -133,7 +141,7 @@ sessionInfo()
 ```
 ## R version 3.3.2 (2016-10-31)
 ## Platform: x86_64-apple-darwin13.4.0 (64-bit)
-## Running under: macOS Sierra 10.12.3
+## Running under: macOS Sierra 10.12.4
 ## 
 ## locale:
 ## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
@@ -157,4 +165,4 @@ sessionInfo()
 ```
 
 -----
-*prepared by <youngser@jhu.edu> on Tue Mar 28 14:13:40 2017*
+*prepared by <youngser@jhu.edu> on Tue Apr  4 11:49:32 2017*

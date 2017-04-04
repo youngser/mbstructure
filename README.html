@@ -187,7 +187,7 @@ Illustration of the larval Drosophila mushroom body connectome as a directed gra
 <div id="r-package" class="section level2">
 <h2><span class="header-section-number">3.1</span> <code>R</code> Package</h2>
 <p>The latest <code>R</code> source package can be installed via:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;http://www.cis.jhu.edu/~parky/MBstructure/mbstructure_0.1.0.tar.gz&quot;</span>,<span class="dt">type=</span><span class="st">&quot;source&quot;</span>,<span class="dt">method=</span><span class="st">&quot;wget&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;http://www.cis.jhu.edu/~parky/MBstructure/mbstructure_0.1.0.tar.gz&quot;</span>,<span class="dt">type=</span><span class="st">&quot;source&quot;</span>)</code></pre></div>
 <p>or through <code>github</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(devtools)
 devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;youngser/mbstructure&quot;</span>)</code></pre></div>
@@ -206,22 +206,22 @@ devtools<span class="op">::</span><span class="kw">install_github</span>(<span c
 <span class="co"># Figures 8, 9, 10, 11, 12, 13 in Section 4</span>
 <span class="kw">demo</span>(sec4) <span class="co"># Warning: This takes several minutes to run on my laptop!</span>
 
-<span class="co"># FIgure 14 in Section 5.1.1</span>
+<span class="co"># Figure 14 in Section 5.1.1</span>
 <span class="kw">demo</span>(sec511) <span class="co"># Warning: This takes about half an hour to run on my laptop!</span>
 
 <span class="co"># Figure 15 in Section 5.1.2</span>
 <span class="kw">demo</span>(sec512) <span class="co"># Warning: This takes a few minutes to run on my laptop!</span>
 
-<span class="co">#Figure 16 in Section 5.1.4</span>
+<span class="co"># Figure 16 in Section 5.1.4</span>
 <span class="kw">demo</span>(sec514) <span class="co"># Warning: This takes a few minutes to run on my laptop!</span></code></pre></div>
 <p>The outputs of the demos are here:</p>
 <ul>
-<li><a href="demo/sec2.html">Section 2</a></li>
-<li><a href="demo/sec3.html">Section 3</a></li>
-<li><a href="demo/sec4.html">Section 4</a></li>
-<li><a href="demo/sec511.html">Section 5.1.1</a></li>
-<li><a href="demo/sec512.html">Section 5.1.2</a></li>
-<li><a href="demo/sec514.html">Section 5.1.4</a></li>
+<li><a href="http://www.cis.jhu.edu/~parky/MBstructure/demo/sec2.html">Section 2</a></li>
+<li><a href="http://www.cis.jhu.edu/~parky/MBstructure/demo/sec3.html">Section 3</a></li>
+<li><a href="http://www.cis.jhu.edu/~parky/MBstructure/demo/sec4.html">Section 4</a></li>
+<li><a href="http://www.cis.jhu.edu/~parky/MBstructure/demo/sec511.html">Section 5.1.1</a></li>
+<li><a href="http://www.cis.jhu.edu/~parky/MBstructure/demo/sec512.html">Section 5.1.2</a></li>
+<li><a href="http://www.cis.jhu.edu/~parky/MBstructure/demo/sec514.html">Section 5.1.4</a></li>
 </ul>
 </div>
 </div>
@@ -232,28 +232,36 @@ devtools<span class="op">::</span><span class="kw">install_github</span>(<span c
 ## 
 ## Description:
 ## 
-## Package:       mbstructure
-## Type:          Package
-## Title:         Semiparametric spectral modeling of the complete
-##                larval Drosophila mushroom body connectome
-## Version:       0.1.0
-## Depends:       R (&gt;= 3.0)
-## Imports:       igraph, Matrix, lattice, ggplot2, mclust, irlba,
-##                mvtnorm, RColorBrewer, packcircles
-## Author:        Youngser Park, Yichen Qin
-## Maintainer:    Youngser Park &lt;youngser@jhu.edu&gt;
-## Description:   Routine to perform semiparametric spectral modeling
-##                of the complete larval Drosophila mushroom body
-##                connectome.
-## License:       GPL (&gt;= 2)
-## URL:           http://www.cis.jhu.edu/~parky/MBstructure.html
-## LazyData:      TRUE
-## RoxygenNote:   5.0.1
-## Built:         R 3.3.2; ; 2017-03-28 16:47:42 UTC; unix</code></pre>
+## Package:           mbstructure
+## Type:              Package
+## Title:             Semiparametric spectral modeling of the
+##                    complete larval Drosophila mushroom body
+##                    connectome
+## Version:           0.1.0
+## Depends:           R (&gt;= 3.0)
+## Imports:           igraph, Matrix, lattice, ggplot2, mclust,
+##                    irlba, mvtnorm, RColorBrewer, packcircles
+## Author:            Youngser Park, Yichen Qin
+## Maintainer:        Youngser Park &lt;youngser@jhu.edu&gt;
+## Description:       Routine to perform semiparametric spectral
+##                    modeling of the complete larval Drosophila
+##                    mushroom body connectome.
+## License:           GPL (&gt;= 2)
+## URL:               http://www.cis.jhu.edu/~parky/MBstructure.html
+## LazyData:          TRUE
+## RoxygenNote:       5.0.1
+## Suggests:          knitr, rmarkdown
+## VignetteBuilder:   knitr
+## Built:             R 3.3.2; ; 2017-04-04 15:46:07 UTC; unix
+## 
+## Further information is available in the following vignettes in
+## directory '/Users/parky/RFolder/mbstructure/doc':
+## 
+## mbstructure: MBstructure (source, pdf)</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sessionInfo</span>()</code></pre></div>
 <pre><code>## R version 3.3.2 (2016-10-31)
 ## Platform: x86_64-apple-darwin13.4.0 (64-bit)
-## Running under: macOS Sierra 10.12.3
+## Running under: macOS Sierra 10.12.4
 ## 
 ## locale:
 ## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
@@ -275,7 +283,7 @@ devtools<span class="op">::</span><span class="kw">install_github</span>(<span c
 ## [17] evaluate_0.10    rmarkdown_1.3    stringi_1.1.2    scales_0.4.1    
 ## [21] backports_1.0.4  pkgconfig_2.0.0</code></pre>
 <hr />
-<p><em>prepared by <a href="mailto:youngser@jhu.edu">youngser@jhu.edu</a> on Tue Mar 28 14:13:40 2017</em></p>
+<p><em>prepared by <a href="mailto:youngser@jhu.edu">youngser@jhu.edu</a> on Tue Apr 4 11:49:32 2017</em></p>
 </div>
 
 

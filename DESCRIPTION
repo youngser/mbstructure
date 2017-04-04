@@ -21,3 +21,5 @@ License: GPL (>= 2)
 URL: http://www.cis.jhu.edu/~parky/MBstructure.html
 LazyData: TRUE
 RoxygenNote: 5.0.1
+Suggests: knitr, rmarkdown
+VignetteBuilder: knitr

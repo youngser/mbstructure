@@ -1,14 +1,20 @@
 ---
 title:  Semiparametric spectral modeling of the Drosophila connectome
-output: 
-    html_document:
-      css: ~/RFolder/pandoc.css
-      fig_height: 6
-      fig_width: 6
-      highlight: pygments
-      keep_md: yes
-      theme: cerulean
-      number_sections: yes
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{MBstructure}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+#  > devtools::build_vignettes()
+#output: 
+#    html_document:
+#      css: ~/RFolder/pandoc.css
+#      fig_height: 6
+#      fig_width: 6
+#      highlight: pygments
+#      keep_md: yes
+#      theme: cerulean
+#      number_sections: yes
 #      toc: yes
 #        toc_depth: 3
 #        toc_float: no
@@ -70,7 +76,7 @@ We present semiparametric spectral modeling of the complete larval Drosophila mu
 > **Keywords**: Connectome; Network; Graph; Spectral embedding; Mixture model; Clustering
 
 <figure>
-<img src="vignettes/diagram-circuit.jpg" width="700px" />
+<img src="diagram-circuit.jpg" width="700px" />
   <figcaption>Illustration of the larval Drosophila mushroom body connectome as a directed graph on four neuron types.</figcaption>
 </figure>
 
@@ -91,7 +97,7 @@ To run the experiemnts in the paper, please follow these steps.
 
 The latest `R` source package can be installed via:
 ```{r echo=TRUE,eval=FALSE}
-install.packages("http://www.cis.jhu.edu/~parky/MBstructure/mbstructure_0.1.0.tar.gz",type="source")
+install.packages("http://www.cis.jhu.edu/~parky/MBstructure/mbstructure_0.1.0.tar.gz",type="source",method="wget")
 ```
 
 or through `github`:
