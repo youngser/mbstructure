@@ -15,7 +15,7 @@ and
 
 > C.E. Priebe,  Y. Park, M. Tang, A, Athreya, V. Lyzinski, J. Vogelstein,
 Y. Qin, B. Cocanougher, K. Eichler, M. Zlatic, A. Cardona,
-"[Semiparametric spectral modeling of the Drosophila connectome](http://arxiv.org/abs/1502.03391)," _Journal of the American Statistical Association Application and Case Studies_, submitted, 2017.
+"Semiparametric spectral modeling of the Drosophila connectome" _Journal of the American Statistical Association Application and Case Studies_, submitted, 2017.
 
 
 # Abstract
@@ -123,10 +123,10 @@ library(help='mbstructure')
 ## License:           GPL (>= 2)
 ## URL:               http://www.cis.jhu.edu/~parky/MBstructure.html
 ## LazyData:          TRUE
-## RoxygenNote:       5.0.1
+## RoxygenNote:       6.0.1
 ## Suggests:          knitr, rmarkdown
 ## VignetteBuilder:   knitr
-## Built:             R 3.3.2; ; 2017-04-04 15:46:07 UTC; unix
+## Built:             R 3.3.2; ; 2017-04-10 13:37:25 UTC; unix
 ## 
 ## Further information is available in the following vignettes in
 ## directory '/Users/parky/RFolder/mbstructure/doc':
@@ -139,7 +139,7 @@ sessionInfo()
 ```
 
 ```
-## R version 3.3.2 (2016-10-31)
+## R version 3.3.3 (2017-03-06)
 ## Platform: x86_64-apple-darwin13.4.0 (64-bit)
 ## Running under: macOS Sierra 10.12.4
 ## 
@@ -151,18 +151,18 @@ sessionInfo()
 ## 
 ## other attached packages:
 ##  [1] xtable_1.8-2       printr_0.0.6       mvtnorm_1.0-5     
-##  [4] packcircles_0.1.1  RColorBrewer_1.1-2 mclust_5.2.2      
+##  [4] packcircles_0.1.1  RColorBrewer_1.1-2 mclust_5.2.3      
 ##  [7] lattice_0.20-34    Matrix_1.2-7.1     igraph_1.1.0      
 ## [10] ggplot2_2.2.1      knitr_1.15.1      
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] Rcpp_0.12.9      magrittr_1.5     munsell_0.4.3    colorspace_1.3-2
-##  [5] stringr_1.1.0    plyr_1.8.4       tools_3.3.2      grid_3.3.2      
+##  [5] stringr_1.2.0    plyr_1.8.4       tools_3.3.3      grid_3.3.3      
 ##  [9] gtable_0.2.0     htmltools_0.3.5  yaml_2.1.14      lazyeval_0.2.0  
-## [13] rprojroot_1.2    digest_0.6.12    assertthat_0.1   tibble_1.2      
-## [17] evaluate_0.10    rmarkdown_1.3    stringi_1.1.2    scales_0.4.1    
-## [21] backports_1.0.4  pkgconfig_2.0.0
+## [13] rprojroot_1.2    digest_0.6.12    tibble_1.3.0     evaluate_0.10   
+## [17] rmarkdown_1.3    stringi_1.1.2    scales_0.4.1     backports_1.0.4 
+## [21] pkgconfig_2.0.0
 ```
 
 -----
-*prepared by <youngser@jhu.edu> on Tue Apr  4 11:49:32 2017*
+*prepared by <youngser@jhu.edu> on Tue May  9 09:06:59 2017*
