@@ -176,9 +176,14 @@ Illustration of the larval Drosophila mushroom body connectome as a directed gra
 </div>
 <div id="data" class="section level1">
 <h1><span class="header-section-number">2</span> Data</h1>
-<p>HHMI Janelia recently reconstructed the complete wiring diagram of the higher order parallel fiber system for associative learning in the larval Drosophila brain, the mushroom body (MB). Memories are thought to be stored as functional and structural changes in connections between neurons, but the complete circuit architecture of a higher-order learning center involved in memory formation or storage has not been known in any organism … until now. This data set provides a real and important example for initial investigation into synapse-level structural connectome modeling.</p>
+<blockquote>
+<p>K. Eichler, F. Li, A. L. Kumar, Y. Park, I. Andrade, C. Schneider-Mizell, T. Saumweber, A. Huser, D. Bonnery, B. Gerber, R. D. Fetter, J. W. Truman, C. E Priebe, L. F. Abbott, A. Thum, M. Zlatic, and A. Cardona, “The complete wiring diagram of a high-order learning and memory center, the insect mushroom body,” Nature, accepted for publication, 2017.</p>
+</blockquote>
+<p><br> HHMI Janelia recently reconstructed the complete wiring diagram of the higher order parallel fiber system for associative learning in the larval Drosophila brain, the mushroom body (MB). Memories are thought to be stored as functional and structural changes in connections between neurons, but the complete circuit architecture of a higher-order learning center involved in memory formation or storage has not been known in any organism … until now. This data set provides a real and important example for initial investigation into synapse-level structural connectome modeling.</p>
 <p>Our MB connectome was obtained via serial section transmission electron microscopy of an entire larval Drosophila nervous system. This connectome contains the entirety of MB intrinsic neurons called Kenyon cells and all of their pre- and post-synaptic partners.</p>
-<p>The data, both right and left MB connectomes as well as their meta information, are included in this <code>R</code> package and can be loaded into <code>R</code> via <code>data(MBconnectome)</code>. See below demos for the details.</p>
+<p>The data, both right and left MB connectomes as well as their meta information, are included in this <code>R</code> package and can be loaded into <code>R</code> via</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(MBconnectome)</code></pre></div>
+<p>See below demos for the details.</p>
 </div>
 <div id="codes-and-demos" class="section level1">
 <h1><span class="header-section-number">3</span> Codes and Demos</h1>
@@ -186,9 +191,7 @@ Illustration of the larval Drosophila mushroom body connectome as a directed gra
 (NB: All the codes are in the <code>demo</code> folder at <a href="https://github.com/youngser/mbstructure">github</a>.)</p>
 <div id="r-package" class="section level2">
 <h2><span class="header-section-number">3.1</span> <code>R</code> Package</h2>
-<p>The latest <code>R</code> source package can be installed via:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;http://www.cis.jhu.edu/~parky/MBstructure/mbstructure_0.1.0.tar.gz&quot;</span>,<span class="dt">type=</span><span class="st">&quot;source&quot;</span>)</code></pre></div>
-<p>or through <code>github</code>:</p>
+<p>The latest <code>R</code> source package can be installed via <code>github</code> as</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(devtools)
 devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;youngser/mbstructure&quot;</span>)</code></pre></div>
 </div>
@@ -283,7 +286,7 @@ devtools<span class="op">::</span><span class="kw">install_github</span>(<span c
 ## [17] rmarkdown_1.3    stringi_1.1.2    scales_0.4.1     backports_1.0.4 
 ## [21] pkgconfig_2.0.0</code></pre>
 <hr />
-<p><em>prepared by <a href="mailto:youngser@jhu.edu">youngser@jhu.edu</a> on Tue May 9 20:24:18 2017</em></p>
+<p><em>prepared by <a href="mailto:youngser@jhu.edu">youngser@jhu.edu</a> on Wed May 10 07:29:40 2017</em></p>
 </div>
 
 

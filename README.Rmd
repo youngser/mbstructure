@@ -76,11 +76,19 @@ We present semiparametric spectral modeling of the complete larval Drosophila mu
 
 # Data
 
+> K. Eichler, F. Li, A. L. Kumar, Y. Park, I. Andrade, C. Schneider-Mizell, T. Saumweber, A. Huser, D. Bonnery, B. Gerber, R. D. Fetter, J. W. Truman, C. E Priebe, L. F. Abbott, A. Thum, M. Zlatic, and A. Cardona, "The complete wiring diagram of a high-order learning and memory center, the insect mushroom body," Nature, accepted for publication, 2017.  
+
+<br>
 HHMI Janelia recently reconstructed the complete wiring diagram of the higher order parallel fiber system for associative learning in the larval Drosophila brain, the mushroom body (MB). Memories are thought to be stored as functional and structural changes in connections between neurons, but the complete circuit architecture of a higher-order learning center involved in memory formation or storage has not been known in any organism ... until now. This data set provides a real and important example for initial investigation into synapse-level structural connectome modeling.  
 
 Our MB connectome was obtained via serial section transmission electron microscopy of an entire larval Drosophila nervous system. This connectome contains the entirety of MB intrinsic neurons called Kenyon cells and all of their pre- and post-synaptic partners.
 
-The data, both right and left MB connectomes as well as their meta information, are included in this `R` package and can be loaded into `R` via `data(MBconnectome)`. See below demos for the details.
+The data, both right and left MB connectomes as well as their meta information, are included in this `R` package and can be loaded into `R` via 
+```{r eval=FALSE}
+data(MBconnectome)
+``` 
+
+See below demos for the details.
 
 # Codes and Demos
 
@@ -89,12 +97,7 @@ To run the experiemnts in the paper, please follow these steps.
 
 ## `R` Package
 
-The latest `R` source package can be installed via:
-```{r echo=TRUE,eval=FALSE}
-install.packages("http://www.cis.jhu.edu/~parky/MBstructure/mbstructure_0.1.0.tar.gz",type="source")
-```
-
-or through `github`:
+The latest `R` source package can be installed via `github` as
 
 ```{r echo=TRUE}
 require(devtools)
