@@ -15,7 +15,7 @@ and
 
 > C.E. Priebe,  Y. Park, M. Tang, A, Athreya, V. Lyzinski, J. Vogelstein,
 Y. Qin, B. Cocanougher, K. Eichler, M. Zlatic, A. Cardona,
-"Semiparametric spectral modeling of the Drosophila connectome" _Journal of the American Statistical Association Application and Case Studies_, submitted, 2017.
+"[Semiparametric spectral modeling of the Drosophila connectome](https://arxiv.org/abs/1705.03297)", submitted, 2017.
 
 
 # Abstract
@@ -165,4 +165,4 @@ sessionInfo()
 ```
 
 -----
-*prepared by <youngser@jhu.edu> on Tue May  9 09:06:59 2017*
+*prepared by <youngser@jhu.edu> on Tue May  9 20:24:18 2017*
