@@ -18,7 +18,6 @@ Author: Youngser Park, Yichen Qin
 Maintainer: Youngser Park <youngser@jhu.edu>
 Description: Routine to perform semiparametric spectral modeling of the complete larval Drosophila mushroom body connectome.
 License: GPL (>= 2)
-URL: http://www.cis.jhu.edu/~parky/MBstructure.html
 LazyData: TRUE
 RoxygenNote: 6.0.1
 Suggests: knitr, rmarkdown
