@@ -123,12 +123,11 @@ library(help='mbstructure')
 ##                    modeling of the complete larval Drosophila
 ##                    mushroom body connectome.
 ## License:           GPL (>= 2)
-## URL:               http://www.cis.jhu.edu/~parky/MBstructure.html
 ## LazyData:          TRUE
 ## RoxygenNote:       6.0.1
 ## Suggests:          knitr, rmarkdown
 ## VignetteBuilder:   knitr
-## Built:             R 3.3.2; ; 2017-04-10 13:37:25 UTC; unix
+## Built:             R 3.3.3; ; 2017-05-11 12:08:36 UTC; unix
 ## 
 ## Further information is available in the following vignettes in
 ## directory '/Users/parky/RFolder/mbstructure/doc':
@@ -167,4 +166,4 @@ sessionInfo()
 ```
 
 -----
-*prepared by <youngser@jhu.edu> on Wed May 10 07:31:47 2017*
+*prepared by <youngser@jhu.edu> on Thu May 11 08:09:43 2017*
