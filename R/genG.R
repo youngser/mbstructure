@@ -1,4 +1,4 @@
-generate.graph <- function(dat,vdf)
+generate.graph <- function(dat,vdf, weighted=FALSE)
 {
     suppressMessages(library(igraph))
 
@@ -21,17 +21,19 @@ generate.graph <- function(dat,vdf)
     diag(A) <- 0
     rownames(A) <- colnames(A) <- vdf[,1]
 
-    g <- graph.adjacency(A)
+    g <- graph.adjacency(A, weighted=TRUE)
     # remove isolates => lcc
     iso <- which(degree(g)==0)
     vdf <- vdf[-iso,]
     g <- delete_vertices(g,iso);
-    g.w <- g
 
     # remove self loop & multiple edges
     g <- simplify(g) # not working? try manually
-    A <- as.matrix(g[]); A[A>0] <- 1
-    g <- graph.adjacency(A)
+    if (!weighted) {
+        A <- as.matrix(g[]);
+        A[A>0] <- 1
+        g <- graph.adjacency(A)
+    }
 
     # add graph attributes
     data(claw)
@@ -53,5 +55,5 @@ generate.graph <- function(dat,vdf)
     V(g)$claw <- vdf$claw
     V(g)$dist <- vdf$dist
 
-    return(list(g=g, g.w=g.w, vdf=vdf))
+    return(list(g=g, vdf=vdf))
 }
