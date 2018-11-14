@@ -1,0 +1,229 @@
+---
+title: "Weighted LSM"
+#author: "Johns Hopkins University" <br> "University of Cincinnati" <br>  "HHMI Janelia Research Campus"
+date: '`r Sys.Date()`'
+output:
+  html_document:
+    code_folding: show
+    css: ~/RFolder/pandoc.css
+    fig.path: ~/Dropbox/Worm/Codes/Connectome/MB-figure/
+    fig_caption: yes
+    fig_height: 7
+    fig_width: 7
+    highlight: pygments
+    keep_md: yes
+    number_sections: yes
+    theme: cerulean
+    toc: yes
+    toc_depth: 3
+    toc_float: no
+  pdf_document:
+    fig_caption: yes
+    keep_tex: yes
+    number_sections: yes
+editor_options: 
+  chunk_output_type: console
+---
+
+<style type="text/css">
+.table {
+    width: 40%;
+}
+</style>
+
+```{r setup,include=FALSE,results='asis'}
+#<link rel="stylesheet" href="http://vis.supstat.com/assets/themes/dinky/css/scianimator.css">
+#<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+#<script src="http://vis.supstat.com/assets/themes/dinky/js/jquery.scianimator.min.js"></script>
+
+suppressMessages(library(ggplot2))
+suppressMessages(library(igraph))
+suppressMessages(library(Matrix))
+suppressMessages(library(mclust))
+suppressMessages(library(gmmase))
+
+suppressMessages(library(doMC))
+registerDoMC(cores=detectCores()-1)
+
+#suppressMessages(library(rgl))
+
+source("~/Dropbox/RFiles/stfp.R")
+source("~/Dropbox/RFiles/fmeasure.R")
+source("~/Dropbox/Worm/Codes/Connectome/mbstructure/R/structure-utils.R")
+#suppressMessages(library(openxlsx))
+
+library(knitr)
+#knit_hooks$set(webgl = hook_webgl)
+#cat('<script type="text/javascript">', readLines(system.file('WebGL', 'CanvasMatrix.js', package = 'rgl')), '</script>', sep = '\n')
+
+#opts_knit$set(animation.fun = hook_scianimator)
+
+#matureF <- ifelse(data.type=="mature",TRUE,FALSE)
+#opts_chunk$set(eval = matureF)
+
+
+#knitr::opts_chunk$set(cache=TRUE, autodep=TRUE)
+#dep_auto() # figure out dependencies automatically
+opts_chunk$set(cache=FALSE,echo=TRUE,eval=TRUE,warning=FALSE,message=FALSE,comment="#",
+               dpi=100,dev=c('png','pdf'))
+
+opts_knit$set(aliases=c(h='fig.height', w='fig.width', cap='fig.cap', scap='fig.scap'))                                                                               
+opts_knit$set(eval.after = c('fig.cap','fig.scap'))                                                                            
+knit_hooks$set(document = function(x) {                                                                                        
+          gsub('(\\\\end\\{knitrout\\}[\n]+)', '\\1\\\\noindent ', x)                                                                  
+          })
+opts_knit$set(animation.fun = hook_scianimator)
+
+#knit_hooks$set(plot = function(x, options) {
+#       paste('<figure><img src="',
+#             opts_knit$get('base.url'), paste(x, collapse = '.'),
+#             '"><figcaption>', options$fig.cap, '</figcaption></figure>',
+#             sep = '')
+# })
+
+ fn = local({
+   i = 0
+   function(x) {
+     i <<- i + 1
+#     paste('Figure ', i, ': ', x, sep = '')
+     paste('', '', x, sep = '')
+   }
+ })
+
+##################
+rmarkdownTable <- function(df) {
+    cat(paste(names(df), collapse = "|"))
+    cat("\n")
+    cat(paste(rep("-", ncol(df)), collapse = "|"))
+    cat("\n")
+
+    for(i in 1:nrow(df)){
+        cat(paste(df[i,], collapse = "|"))
+        cat("\n")
+    }
+    invisible(NULL)
+}
+
+bind.ordered=function(x,y){
+
+  diffCol = setdiff(colnames(x),colnames(y))
+  if (length(diffCol)>0){
+    cols=colnames(y)
+    for (i in 1:length(diffCol)) y=cbind(y,NA)
+    colnames(y)=c(cols,diffCol)
+  }
+
+  diffCol = setdiff(colnames(y),colnames(x))
+  if (length(diffCol)>0){
+    cols=colnames(x)
+    for (i in 1:length(diffCol)) x=cbind(x,NA)
+    colnames(x)=c(cols,diffCol)
+  }
+  return(rbind(x, y[, colnames(x)]))
+}
+
+gg_color_hue <- function(n,alpha=1) {
+  hues = seq(15, 375, length = n + 1)
+  hcl(h = hues, l = 65, c = 100, alpha = alpha)[1:n]
+}
+
+#ani.options(autobrowse = FALSE, interval = 1)
+
+opts_knit$set(animation.fun = function(x, options, format = "gif") {
+  x = c(knitr:::sans_ext(x), knitr:::file_ext(x))
+  fig.num = options$fig.num
+  format = sub("^[.]", "", format)
+  fig.fname = paste0(sub(paste0(fig.num, "$"), "*", x[1]), 
+                     ".", x[2])
+  mov.fname = paste0(sub(paste0(fig.num, "$"), "", x[1]), ".", 
+                     format)
+
+  # order correctly
+  figs <- Sys.glob(fig.fname)
+  figs <- figs[order(as.numeric(stringr::str_match(figs, paste0("(\\d+)\\.", x[2]))[, 2]))]
+
+  animation::im.convert(figs, output = mov.fname)
+
+  sprintf("![%s](%s)", options$label, paste0(opts_knit$get("base.url"), mov.fname))
+})
+```
+
+# Data
+
+```{R getWeightedGraphs, echo=FALSE, eval=FALSE}
+require(igraph)
+require(Matrix)
+require(mbstructure)
+data(MBconnectome)
+wg.R<- generate.graph(newrdat, vdf.right, weighted=TRUE); summary(wg.R$g); image(wg.R$g[], useAbs=FALSE)
+wg.L<- generate.graph(newldat, vdf.left, weighted=TRUE); summary(wg.L$g); image(wg.L$g[], useAbs=FALSE)
+save(wg.R, wg.L, file="weightedMB.Rbin")
+```
+
+```{r load}
+library(igraph)
+library(Matrix)
+print(load(url("http://www.cis.jhu.edu/~parky/weightedMB.Rbin")))
+summary(wg.R$g); image(wg.R$g[], useAbs=FALSE, main="Right")
+summary(wg.L$g); image(wg.L$g[], useAbs=FALSE, main="Left")
+head(wg.R$vdf)
+head(wg.L$vdf)
+
+# Alter graphs
+A.R <- wg.R$g[]; dim(A.R)
+A.L <- wg.L$g[]; dim(A.L)
+
+sum(diag(A.R)); diag(A.R) <- 0
+sum(diag(A.L)); diag(A.L) <- 0
+
+g.R <- graph.adjacency(A.R, weighted=TRUE); summary(g.R)
+g.L <- graph.adjacency(A.L, weighted=TRUE); summary(g.L)
+```
+
+# PTR
+
+```{r ptr}
+W.R <- E(g.R)$weight
+E(g.R)$weight <- rank(W.R)*2 / (ecount(g.R)+1)
+summary(E(g.R)$weight)
+
+W.L <- E(g.L)$weight
+E(g.L)$weight <- rank(W.L)*2 / (ecount(g.L)+1)
+summary(E(g.L)$weight)
+```
+
+# ASE
+```{r ase}
+is.connected(g.R)
+is.connected(g.L)
+
+dmax <- 20
+ase.R <- embed_adjacency_matrix(g.R, dmax)
+ase.L <- embed_adjacency_matrix(g.L, dmax)
+(elbow.R <- getElbows(ase.R$D, main="scree, Right"))
+(elbow.L <- getElbows(ase.L$D, main="scree, Left"))
+
+dhat.R <- elbow.R[2]
+Xhat.R <- cbind(ase.R$X[,1:dhat.R], ase.R$Y[,1:dhat.R])
+dhat.L <- elbow.L[2]
+Xhat.L <- cbind(ase.L$X[,1:dhat.L], ase.L$Y[,1:dhat.L])
+```
+
+# GMM
+```{r gmm}
+library(mclust)
+
+Kmax <- 10
+mc.R <- Mclust(Xhat.R, 2:Kmax, verbose = FALSE)
+mc.L <- Mclust(Xhat.L, 2:Kmax, verbose = FALSE)
+
+plot(mc.R, "BIC")
+plot(mc.L, "BIC")
+
+table(wg.R$vdf$type, mc.R$class)
+adjustedRandIndex(wg.R$vdf$type, mc.R$class)
+
+table(wg.L$vdf$type, mc.L$class)
+adjustedRandIndex(wg.L$vdf$type, mc.L$class)
+
+```

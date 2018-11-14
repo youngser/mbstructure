@@ -2,6 +2,10 @@ generate.graph <- function(dat,vdf, weighted=FALSE)
 {
     suppressMessages(library(igraph))
 
+    for (i in 1:length(dat)) {
+        dat[[i]][is.na(dat[[i]])] <- 0
+    }
+
     (tab <- table(vdf$type))
     n <- sum(tab)
     cs <- c(0,cumsum(tab))
